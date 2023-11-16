@@ -3,7 +3,7 @@ import React from 'react'
 
 function Pagination() {
   return (
-    <div>Pagination</div>
+    <div>Paginations</div>
   )
 }
 
