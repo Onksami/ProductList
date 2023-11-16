@@ -28,6 +28,7 @@ function Pagination() {
           );
         })}
       </div>
+      {/* @todo create limit array */}
       <div className="limit-box">
         <select>
           <option>10</option>
