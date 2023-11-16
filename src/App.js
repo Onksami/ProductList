@@ -9,9 +9,7 @@ function App() {
   return (
     <div className="App">
       <ProductList />
-      <hr />
-      <br />
-      <hr />
+
       <Pagination />
     </div>
   );

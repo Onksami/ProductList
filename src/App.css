@@ -54,6 +54,16 @@
   background: gray
 }
 
-.test-style  {
-  
+.pagination-box  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+.page {
+  border: 1px solid blue;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
 }

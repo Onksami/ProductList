@@ -5,14 +5,16 @@ export const ProductContext = React.createContext();
 export default function ProductContextApp({ children }) {
   const [items, setItems] = useState([]);
 
+  const [page, setPage] = useState(1);
+
   useEffect(() => {
-    fetch("http://localhost:3002/items?_page=1&_limit=16")
+    fetch(`http://localhost:3002/items?_page=${page}&_limit=10`)
       .then((response) => response.json())
       .then((json) => {
         console.log("json", json);
         setItems(json);
       });
-  }, []);
+  }, [page]); //call useEffect when page is changed
 
   return (
     <ProductContext.Provider
@@ -20,6 +22,8 @@ export default function ProductContextApp({ children }) {
         products: items,
         test: "test",
         isLoading: true,
+        setPage,
+        page,
       }}
     >
       {children}

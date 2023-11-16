@@ -5,7 +5,6 @@ import { ProductContext } from "../Context/ProductContext";
 
 function ProductList(props) {
   const productsContext = useContext(ProductContext);
-  console.log("ProductList  productsContext:", productsContext);
   return (
     <>
       <Header />
