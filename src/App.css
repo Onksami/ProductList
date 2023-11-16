@@ -37,16 +37,7 @@
   }
 }
 
-.products-container{
-  display: flex;
-  /* align-items: center; */
-  flex-wrap: wrap;
-  border: 1px solid red;
-  padding: 10px;
-  gap: 10px;
 
-  color: white;
-}
 .product-card {
   border: 1px solid green;
   padding: 3px;
