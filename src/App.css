@@ -44,7 +44,7 @@
 .sidebar{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center ;
   min-width: 200px;
   background-color:rgb(72, 81, 88)
 }
