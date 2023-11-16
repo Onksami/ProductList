@@ -54,6 +54,12 @@
   background: gray
 }
 
+.pagination-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
 .pagination-box  {
   display: flex;
   justify-content: center;

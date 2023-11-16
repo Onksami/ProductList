@@ -16,11 +16,24 @@ function Pagination() {
       <div className="pagination-box">
         {pageArray.map((p, i) => {
           return (
-            <div className="page" onClick={() => onPageClick(p)}>
+            <div
+              className="page"
+              style={{
+                background: p === productContext.page ? "green" : "",
+              }}
+              onClick={() => onPageClick(p)}
+            >
               {p}{" "}
             </div>
           );
         })}
+      </div>
+      <div className="limit-box">
+        <select>
+          <option>10</option>
+          <option>20</option>
+          <option>30</option>
+        </select>
       </div>
     </div>
   );
