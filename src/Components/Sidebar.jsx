@@ -1,14 +1,16 @@
-import React from "react";
+import React  from "react";
+import Filtration from "./Filtration";
+
+
 
 const Sidebar = () => {
+
+
   return (
-    <div>
-      <div>box 1</div>
-      <div>box 2</div>
-      <div>box 3</div>
-      <div>box 4</div>
-    </div>
-  );
+    // <Filtration />
+    <h1>filtration is loading....</h1>
+   
+    );
 };
 
 export default Sidebar;

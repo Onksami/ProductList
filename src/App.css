@@ -85,3 +85,20 @@
   padding: 10px;
   cursor: pointer;
 }
+
+.limit{
+  border: 1px solid blue;
+  border-radius: 5%;
+  padding: 10px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-size: small;
+}
+
+.form-select{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

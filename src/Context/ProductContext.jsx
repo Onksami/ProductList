@@ -7,14 +7,29 @@ export default function ProductContextApp({ children }) {
 
   const [page, setPage] = useState(1);
 
+  const [limit, setLimit] = useState(10); 
+
+  console.log("limit", limit);
+
+
+  
+
+
+  
+
+
+
+
   useEffect(() => {
-    fetch(`http://localhost:3002/items?_page=${page}&_limit=10`)
+    fetch(`http://localhost:3002/items?_page=${page}&_limit=${limit}`)
       .then((response) => response.json())
       .then((json) => {
         console.log("json", json);
         setItems(json);
       });
-  }, [page]); //call useEffect when page is changed
+  }, [page, limit]); //call useEffect when page is changed
+
+
 
   return (
     <ProductContext.Provider
@@ -24,6 +39,10 @@ export default function ProductContextApp({ children }) {
         isLoading: true,
         setPage,
         page,
+        setLimit,
+        limit,
+      
+
       }}
     >
       {children}
