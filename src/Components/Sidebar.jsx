@@ -8,7 +8,7 @@ const Sidebar = () => {
 
   return (
     // <Filtration />
-    <h1>filtration is loading....</h1>
+    <h1>filtration is loading...</h1>
    
     );
 };
