@@ -20,6 +20,16 @@ const companies = [
   "Company A"
 ];
 
+const tags = [
+  "Trees",
+  "Beach",
+  "Ocean",
+  "Water",
+  "Animal",
+  "Road",
+  "Hills"
+];
+
 
 
 const onOptionChangeHandler = (event) => {
@@ -39,6 +49,15 @@ const onManufacturerChangeHandler = (event) => {
       event.target.value  
   );
 };
+
+// const onTagHandler = (event) => {
+//   // setData(event.target.value);
+//   productContext.setSelectedTag(event.target.value);
+//   console.log(
+//       "User Selected Company - ",
+//       event.target.value  
+//   );
+// };
 
 
   return (
@@ -67,6 +86,17 @@ const onManufacturerChangeHandler = (event) => {
                     );
                 })}
             </select>
+
+    {/* <select onChange={onTagHandler}>
+                <option>Please choose onetag</option>
+                {tags.map((tag, index) => {
+                    return (
+                        <option key={index}>
+                            {tags}
+                        </option>
+                    );
+                })}
+            </select> */}
    </>
   )
 }
