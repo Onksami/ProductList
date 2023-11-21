@@ -13,6 +13,13 @@ function Filtration() {
     "bend"
 ];
 
+const companies = [
+  "Konopelski-Group",
+  "Metz---Kautzer",
+  "Rice-Inc",
+  "Company A"
+];
+
 
 
 const onOptionChangeHandler = (event) => {
@@ -22,6 +29,15 @@ const onOptionChangeHandler = (event) => {
         "User Selected Value - ",
         event.target.value  
     );
+};
+
+const onManufacturerChangeHandler = (event) => {
+  // setData(event.target.value);
+  productContext.setSelectedManufacturer(event.target.value);
+  console.log(
+      "User Selected Company - ",
+      event.target.value  
+  );
 };
 
 
@@ -34,6 +50,19 @@ const onOptionChangeHandler = (event) => {
                     return (
                         <option key={index}>
                             {option}
+                        </option>
+                    );
+                })}
+            </select>
+
+            <br />
+
+    <select onChange={onManufacturerChangeHandler}>
+                <option>Please choose one manufacturer</option>
+                {companies.map((manufacturer, index) => {
+                    return (
+                        <option key={index}>
+                            {manufacturer}
                         </option>
                     );
                 })}
