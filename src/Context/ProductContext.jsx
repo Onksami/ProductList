@@ -10,6 +10,7 @@ export default function ProductContextApp({ children }) {
   const [limit, setLimit] = useState(10); 
 
   console.log("limit", limit);
+  const [selectedItem, setSelectedItem] = useState("");
 
 
   
@@ -41,6 +42,8 @@ export default function ProductContextApp({ children }) {
         page,
         setLimit,
         limit,
+        setSelectedItem,
+        selectedItem
       
 
       }}

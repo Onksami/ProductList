@@ -40,11 +40,7 @@ function Pagination() {
       </div>
       {/* @todo create limit array */}
 
-    
-      
-  
-      <div>
-        <p>Limitation</p>
+
       <select onChange={(l) => onLimitClick(l.target.value)}>
           
         {LimitArray.map((l, i) => {
@@ -54,19 +50,15 @@ function Pagination() {
               className="limit"
               style={{
                 background: l === productContext.limit ? "green" : "",
-              }}
-              
-              
-            >
+              }}>
              {l}{" "}
-              
             </option>
             
           );
         })}
        
       </select>
-      </div>
+      
       
     </div>
   );

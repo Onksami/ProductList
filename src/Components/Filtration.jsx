@@ -1,46 +1,41 @@
-import React, {useContext , useState} from "react";
+import React, {  useState, useEffect, useContext} from 'react'
 import { ProductContext } from "../Context/ProductContext";
 
-function Filtration(props) {
+const allItems = ["all items", "mug", "shirt"];
 
-    const [search, setSearch] = useState("");
-    
+function Filtration() {
+  const [selectedItem, setSelectedItem] = useState(["all items", "mug", "shirt"]);
 
-const productContext =useContext(ProductContext);
-console.log("Filtration  productContext:", productContext);
+  console.log("selected Item Calisiyor mu? ", selectedItem );
 
-
-
-console.log("Filtration items", props); // Contexten gelen degeri gormek icin.
-
-let items = props.prototype.map(props.products)
-console.log("Filtration items for products",  items); //konsola gelmedi
-
-// Array.prototype.props = function(callback) {
-//     let items = []; ...  kullanamadim...
-
-// Conlose a bir array geliyor. array icin bir map yapmam gerekiyor.
-// array.prototype.map() gibi bir fonksiyon kullanilacak array dan verileri alabilmek icin  
+  const productContext = useContext(ProductContext);
+  console.log("Filtration  productContext:", productContext);
 
 
-
-const handleChange = (e) => {
-    setSearch(e.target.value);
+  const handleSelectedItem = (s) => {
+    console.log(handleSelectedItem, s );
+    productContext.setSelectedItem(s);
   }
 
-
+  useEffect ( () => {
+    setSelectedItem ();
+    return console.log("degisti degisti!! "); //useEffect i kullanamadik :/
+    
+  }, [selectedItem] )
 
   return (
-<input type="search" onChange={handleChange} value={search} placeholder="Search ..." > 
-{props.products.filter(() => { 
-    return search.toLowerCase() === "" ? props.products : props.products.name.toLowerCase().includes(search);
-}).map((f, index) => {
-
-    // burda bir sikinti var 
-    //sidebar dan filtration i Comment Out yap.
+   <>
+   <select onChange={handleSelectedItem()}>
+   {allItems.map((allItems, index) => {
+    return (
+      <option key={index}>{allItems}</option>
+      // secilen item i context e veremedim.
+    )
+   })}
     
-})}
-</input>
+
+   </select>
+   </>
   )
 }
 
