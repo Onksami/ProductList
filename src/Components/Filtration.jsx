@@ -1,40 +1,43 @@
-import React, {  useState, useEffect, useContext} from 'react'
+import React, { useContext} from 'react'
 import { ProductContext } from "../Context/ProductContext";
 
-const allItems = ["all items", "mug", "shirt"];
 
 function Filtration() {
-  const [selectedItem, setSelectedItem] = useState(["all items", "mug", "shirt"]);
-
-  console.log("selected Item Calisiyor mu? ", selectedItem );
 
   const productContext = useContext(ProductContext);
   console.log("Filtration  productContext:", productContext);
 
+  const options = [
+    "shirt",
+    "mug",
+    "bend"
+];
 
-  const handleSelectedItem = (s) => {
-    console.log(handleSelectedItem, s );
-    productContext.setSelectedItem(s);
-  }
 
-  useEffect ( () => {
-    setSelectedItem ();
-    return console.log("degisti degisti!! "); //useEffect i kullanamadik :/
-    
-  }, [selectedItem] )
+
+const onOptionChangeHandler = (event) => {
+    // setData(event.target.value);
+    productContext.setSelectedItemType(event.target.value);
+    console.log(
+        "User Selected Value - ",
+        event.target.value  
+    );
+};
+
 
   return (
    <>
-   <select onChange={handleSelectedItem()}>
-   {allItems.map((allItems, index) => {
-    return (
-      <option key={index}>{allItems}</option>
-      // secilen item i context e veremedim.
-    )
-   })}
-    
 
-   </select>
+   <select onChange={onOptionChangeHandler}>
+                <option>Please choose one option</option>
+                {options.map((option, index) => {
+                    return (
+                        <option key={index}>
+                            {option}
+                        </option>
+                    );
+                })}
+            </select>
    </>
   )
 }

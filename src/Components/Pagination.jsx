@@ -26,13 +26,7 @@ function Pagination() {
       <div className="pagination-box">
         {pageArray.map((p, i) => {
           return (
-            <div
-              className="page"
-              style={{
-                background: p === productContext.page ? "green" : "",
-              }}
-              onClick={() => onPageClick(p)}
-            >
+            <div className="page" style={{ background: p === productContext.page ? "green" : "", }} onClick={() => onPageClick(p)} >
               {p}{" "}
             </div>
           );

@@ -9,8 +9,7 @@ export default function ProductContextApp({ children }) {
 
   const [limit, setLimit] = useState(10); 
 
-  console.log("limit", limit);
-  const [selectedItem, setSelectedItem] = useState("");
+  const [selectedItemType, setSelectedItemType] = useState("");
 
 
   
@@ -22,13 +21,15 @@ export default function ProductContextApp({ children }) {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3002/items?_page=${page}&_limit=${limit}`)
+    fetch(`http://localhost:3002/items?_page=${page}&_limit=${limit}&itemType=${selectedItemType}`)
       .then((response) => response.json())
       .then((json) => {
         console.log("json", json);
         setItems(json);
       });
-  }, [page, limit]); //call useEffect when page is changed
+  }, [page, limit, selectedItemType]); //call useEffect when page is changed
+
+
 
 
 
@@ -42,8 +43,8 @@ export default function ProductContextApp({ children }) {
         page,
         setLimit,
         limit,
-        setSelectedItem,
-        selectedItem
+        setSelectedItemType,
+        selectedItemType
       
 
       }}
