@@ -42,12 +42,52 @@
 }
 
 .sidebar{
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center ;
-  min-width: 200px;
-  background-color:rgb(72, 81, 88)
+  width: 400px;
+  background-color:rgb(72, 81, 88);
+  border: 1px solid blue;
 }
+
+/* Selection bar  */
+
+.divSelect{
+
+  height: 300px;
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-right: 5px;
+  color: black;
+
+}
+
+#divProductSelect{
+
+  background: #d2cdcd;
+  
+  }
+
+  #divManufacturerSelect{
+    background: #a19b9b;
+  
+  }
+  
+  #divTagsSelect{
+
+    background: #d7d2d2;
+  }
+
+  div p {
+    
+    margin-top: 1px;
+    margin-left: 1px;
+  }
+
+
+
+  /*  Side bar has ended */
+
 
 .products-container{
   display: flex;
@@ -102,3 +142,6 @@
   justify-content: center;
   align-items: center;
 }
+
+
+

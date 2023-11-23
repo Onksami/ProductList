@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+
 export const ProductContext = React.createContext();
 
 export default function ProductContextApp({ children }) {

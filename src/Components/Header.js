@@ -1,15 +1,11 @@
 import React from 'react'
 
+
 function Header () {
   return (
-    <>
-    <ul>
-        <li>
-            Product List
-        </li>
-    
-    </ul>
-    </>
+    <div className='header'>
+   Market
+    </div>
     
   )
 }

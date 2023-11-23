@@ -6,10 +6,14 @@ import { useContext } from "react";
 import { ProductContext } from "./Context/ProductContext";
 import Sidebar from "./Components/Sidebar";
 
+
 function App() {
   return (
     <div className="App">
+     
       <div className="app-container">
+      <div className="header">
+        </div>
         <div className="sidebar">
           <Sidebar />
         </div>
