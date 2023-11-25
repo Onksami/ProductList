@@ -26,7 +26,10 @@ export default function ProductContextApp({ children }) {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3002/items?_page=${page}&_limit=${limit}&itemType=${selectedItemType}&manufacturer=${selectedManufacturer}`)
+    const pItemType = selectedItemType ?  `&itemType=${selectedItemType}` : "";
+    const pSelectedManufacturer = selectedManufacturer ?  `&manufacturer=${selectedManufacturer}` : "";
+
+    fetch(`http://localhost:3002/items?_page=${page}&_limit=${limit}&${pItemType}&${pSelectedManufacturer}`)
       .then((response) => response.json())
       .then((json) => {
         console.log("json", json);

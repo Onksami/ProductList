@@ -52,6 +52,10 @@
 
 /* Selection bar  */
 
+#sortingSelect{
+  background: #aa9b9b;
+}
+
 .divSelect{
 
   height: 300px;

@@ -1,12 +1,4 @@
-import React, { useContext} from 'react';
-
-import Itemjson from  "../items.json";
-
-import Tagsjson from "../tags.json";
-
-import Companiesjson from "../companies.json"
-
-
+import React, { useContext , useEffect , useState} from 'react';
 
 import { ProductContext } from "../Context/ProductContext";
 
@@ -14,58 +6,29 @@ import { ProductContext } from "../Context/ProductContext";
 
 function Filtration() {
 
+  const [companies, setCompanies] = useState([]);
 
-// console.log("filtation a ekledigim Itemjson geldi", Itemjson);
-// console.log("filtation a ekledigim TagsJson geldi", Tagsjson);
-// console.log("filtation a ekledigim Companiesjson geldi", Companiesjson);
+
 
   const productContext = useContext(ProductContext);
   console.log("Filtration  productContext:", productContext);
 
-  // json to stringify
-  // !!!!! converting didnt work!!!!!!!
 
-const stringifyItems = JSON.stringify(Itemjson);
-// console.log("json dosyasi stringify oldu mu? " , stringifyItems);
+  // get companies request 
+  useEffect(() => {
+    fetch(`http://localhost:3002/companies`)
+      .then((response) => response.json())
+      .then((c) => {
+        console.log("Companies ", c);
+        setCompanies(c)
+       
+      });
+  }, []);
 
-const stringifyTags = JSON.stringify(Tagsjson);
-// console.log("json dosyasi stringify oldu mu? " , stringifyTags);
 
-const stringifyCompanies = JSON.stringify(Companiesjson);
 
-// !!!!!!!!! String to array !!!! 
 
-const arrayItems = JSON.parse(stringifyItems);
-// console.log( " string i array yaptik mi? ", arrayItems);
 
-// const arrayTags = JSON.parse(stringifyTags);
-// const arrayCompanies = JSON.parse(stringifyCompanies);
-
-// fetch("items.json")
-//   .then(response => response.json())
-//   .then(data => {
-//     if (Array.isArray(data)) {
-//       // Use the array here
-//       console.log("item.json has been occured", data); // This will output the array
-//     } else {
-//       console.error('The fetched data is not an array.');
-//     }
-//   })
-
-// const options = [
-//   "mug",
-//   "shirt",
- 
-// ];
-
-const companies = [
-
-  "Rice-Inc",
-  "Oberbrunner-Block-and-Mills",
-  "Dickens-Franecki",
-  "OHara-Group"
-
-];
 
 const tags = [
   "Trees",
@@ -99,33 +62,32 @@ const onCompanyChangeHandler = (event) => {
 
 
 
-// The function which has been made for Tags selection
-
-// const onTagHandler = (event) => {
-//   // setData(event.target.value);
-//   productContext.setSelectedTag(event.target.value);
-//   console.log(
-//       "User Selected Company - ",
-//       event.target.value  
-//   );
-// };
 
 
   return (
    <>
-    <div className='divSelect' id='divProductSelect'>
+    <div id='sortingSelect' className="divSelect">
       <p>Sorting</p>
-    <select onChange={onOptionChangeHandler}>
-                  <option>Please choose one product</option>
-                  {/* {JSON.stringify(options)}; */}
-                  {arrayItems.map((arrayItem, index) => {
-                      return (
-                          <option key={index}>
-                              {arrayItem.itemType}
-                          </option>
-                      );
-                  })}
-              </select>
+      <div className="sortingElm">
+        <div></div>
+      </div>
+
+      <div className="sortingElm">
+
+      </div>
+
+      <div className="sortingElm">
+
+      </div>
+
+      <div className="sortingElm">
+
+      </div>
+    </div>
+
+    <div className='divSelect' id='divProductSelect'>
+      <p>Products Type</p>
+
       </div>
        
       <div className='divSelect' id='divManufacturerSelect'>
@@ -137,7 +99,7 @@ const onCompanyChangeHandler = (event) => {
                 {companies.map((company, index) => {
                     return (
                         <option key={index}>
-                            {company}
+                            {company.slug}
                         </option>
                     );
                 })}
