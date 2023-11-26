@@ -52,6 +52,8 @@ function Filtration() {
     console.log("User Selected Company - ", event.target.value);
   };
 
+
+
   const onTagHandler = (event) => {
     productContext.setSelectedTag(event.target.value);
     console.log("Tags selected  - ", event.target.value);
@@ -75,6 +77,21 @@ function Filtration() {
 
       <div className="divSelect" id="divManufacturerSelect">
         <p>Brands</p>
+
+         {companies.map((company, index) => {
+            return (
+              <div>
+        
+              <input value={company.slug} onChange={onCompanyChangeHandler} type="checkbox" id="scales" name="scales" checked = { productContext.selectedManufacturer === company.slug ? true : false} />
+              <label for="scales">{company.name}</label>
+
+              </div>
+            );
+          })}
+
+  
+
+
         <select onChange={onCompanyChangeHandler}>
           <option>Please choose one manufacturer</option>
 
