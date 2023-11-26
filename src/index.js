@@ -6,7 +6,7 @@ import ProductContext from './Context/ProductContext';
 
 
 ReactDOM.render(
-  <React.StrictMode>
+
 
     < ProductContext> 
 
@@ -14,6 +14,6 @@ ReactDOM.render(
 
       </ProductContext>
   
-  </React.StrictMode>,
+,
   document.getElementById('root')
 );

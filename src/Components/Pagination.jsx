@@ -9,15 +9,15 @@ const LimitArray = [10, 20, 30]; // array for limitation
 
 function Pagination() {
   const productContext = useContext(ProductContext);
-  console.log("Pagination  productContext:", productContext);
+
 
   const onPageClick = (p) => {
-    console.log("onPageClick", p);
+    // console.log("onPageClick", p);
     productContext.setPage(p);
   };
 
   const onLimitClick = (l) => {
-    console.log("onLimitClick", l);
+    // console.log("onLimitClick", l);
     productContext.setLimit(l); //function for limitation
 };
 
