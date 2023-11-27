@@ -80,8 +80,25 @@
   
   #divTagsSelect{
 
-    background: #d7d2d2;
+    background: #a19b9b;
+    
+    
   }
+
+  #tagsElement{
+    display: flex;
+    height: auto;
+    width: auto;
+    background: #a19b9b;
+
+  }
+  #tagsElement label{
+    height: auto;
+    width: auto;
+  
+
+  }
+
 
   div p {
     

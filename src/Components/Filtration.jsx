@@ -1,15 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import { ProductContext } from "../Context/ProductContext";
 
+
+
 function Filtration() {
+
+
+  // variables
+
   const [companies, setCompanies] = useState([]);
   const [itemType, setItemTypes] = useState([]);
   const [tags, setTags] = useState([]);
 
-
   const productContext = useContext(ProductContext);
   console.log("Filtration  productContext:", productContext);
+
+
 
   // get companies request
   useEffect(() => {
@@ -19,7 +25,6 @@ function Filtration() {
         // console.log("Companies ", c);
         setCompanies(c);
       });
-      
   }, []);
 
   // get itemType request
@@ -42,6 +47,10 @@ function Filtration() {
       });
   }, []);
 
+// ----------------- functions -----------------------
+
+
+
   const onItemTypeChangeHandler = (event) => {
     productContext.setSelectedItemType(event.target.value);
     console.log("User Selected an itemtype - ", event.target.value);
@@ -52,15 +61,20 @@ function Filtration() {
     console.log("User Selected Company - ", event.target.value);
   };
 
-
-
   const onTagHandler = (event) => {
     productContext.setSelectedTag(event.target.value);
     console.log("Tags selected  - ", event.target.value);
   };
 
+
+
+// Rendering 
+
   return (
     <>
+
+
+{/* ---------------- Sorting  ---------------  */}
       <div id="sortingSelect" className="divSelect">
         <p>Sorting</p>
         <div className="sortingElm">
@@ -74,23 +88,27 @@ function Filtration() {
         <div className="sortingElm"></div>
       </div>
 
-
-      <div className="divSelect" id="divManufacturerSelect">
+{/* ---------------- Manufacturer ---------------  */}
+<div className="divSelect" id="divManufacturerSelect">
         <p>Brands</p>
 
-         {companies.map((company, index) => {
-            return (
-              <div>
-        
-              <input value={company.slug} onChange={onCompanyChangeHandler} type="checkbox" id="scales" name="scales" checked = { productContext.selectedManufacturer === company.slug ? true : false} />
+        {companies.map((company, index) => {
+          return (
+            <div key={index}>
+              <input
+                value={company.slug}
+                onChange={onCompanyChangeHandler}
+                type="checkbox"
+                checked={
+                  productContext.selectedManufacturer === company.slug
+                    ? true
+                    : false
+                }
+              />
               <label for="scales">{company.name}</label>
-
-              </div>
-            );
-          })}
-
-  
-
+            </div>
+          );
+        })}
 
         <select onChange={onCompanyChangeHandler}>
           <option>Please choose one manufacturer</option>
@@ -106,29 +124,53 @@ function Filtration() {
       </div>
 
 
+{/* ---------------- Tags ---------------  */}
+<div className="divSelect" id="divTagSelect">
+        <p>Tags</p>
+        {tags.map((tag, index) => {
+          return (
+            <div key={index} id="tagsElement">
+              <input
+                value={tag}
+                onChange={onTagHandler}
+                type="checkbox"
+                checked={
+                  productContext.selectedTag === tag ? true : false
+                }
+              />
+              <label for="tag">{tag}</label>
+            </div>
+          );
+        })}
+
+        <select onChange={onTagHandler} >
+          <option>Please choose one Tag</option>
+
+          {tags.map((tag, index) => {
+            return (
+              <option key={index} value={tag}>
+                {tag}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
+
+{/* ---------------- Product Type ---------------  */}
       <div className="divSelect" id="divProductSelect">
         <p>Products Type</p>
         <select onChange={onItemTypeChangeHandler}>
           <option>Please choose one Item Type</option>
 
-          { itemType.length > 0 ?  itemType.map((itemType, index) => {
-            return <option key={index}>{itemType}</option>;
-          }) : ""} 
+          {itemType.length > 0
+            ? itemType.map((itemType, index) => {
+                return <option key={index}>{itemType}</option>;
+              })
+            : ""}
         </select>
       </div>
 
-
-      <div>
-      <select onChange={onTagHandler}>
-          { tags.length > 0 ? tags.map((tag, index) => {
-            return (
-              <option key={index} >
-                {tag}
-              </option>
-            );
-          }) : ""}
-      </select>
-      </div>
     </>
   );
 }
