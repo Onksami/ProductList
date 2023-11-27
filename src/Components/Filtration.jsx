@@ -12,6 +12,7 @@ function Filtration() {
   const [itemType, setItemTypes] = useState([]);
   const [tags, setTags] = useState([]);
 
+
   const productContext = useContext(ProductContext);
   console.log("Filtration  productContext:", productContext);
 
@@ -42,14 +43,15 @@ function Filtration() {
     fetch(`http://localhost:3002/tags`)
       .then((response) => response.json())
       .then((t) => {
-        console.log("Tagslar geldi ", t);
+        // console.log("Tagslar geldi ", t);
         setTags(t);
       });
   }, []);
 
+
+
+
 // ----------------- functions -----------------------
-
-
 
   const onItemTypeChangeHandler = (event) => {
     productContext.setSelectedItemType(event.target.value);
@@ -66,6 +68,10 @@ function Filtration() {
     console.log("Tags selected  - ", event.target.value);
   };
 
+const lowToHigh = () => {
+  // burda fetch islemi yapip siralamayi belirlemem gerekiyor
+  
+}
 
 
 // Rendering 
@@ -77,15 +83,8 @@ function Filtration() {
 {/* ---------------- Sorting  ---------------  */}
       <div id="sortingSelect" className="divSelect">
         <p>Sorting</p>
-        <div className="sortingElm">
-          <div></div>
-        </div>
-
-        <div className="sortingElm"></div>
-
-        <div className="sortingElm"></div>
-
-        <div className="sortingElm"></div>
+        <input type="checkbox" name="lowToHigh" id="lowToHigh"/>
+        <label onClick={lowToHigh} type="checkbox">Price low to high</label>
       </div>
 
 {/* ---------------- Manufacturer ---------------  */}
