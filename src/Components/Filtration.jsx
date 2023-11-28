@@ -12,6 +12,7 @@ function Filtration() {
   const [itemType, setItemTypes] = useState([]);
   const [tags, setTags] = useState([]);
 
+  
 
   const productContext = useContext(ProductContext);
   console.log("Filtration  productContext:", productContext);
@@ -68,11 +69,12 @@ function Filtration() {
     console.log("Tags selected  - ", event.target.value);
   };
 
-const lowToHigh = () => {
-  // burda fetch islemi yapip siralamayi belirlemem gerekiyor
-  
-}
+//Sorting function
 
+const onLowToHigh = (lth) => {
+  // console.log("onLimitClick", l);
+  productContext.setSort(lth); //function for limitation
+};
 
 // Rendering 
 
@@ -83,8 +85,19 @@ const lowToHigh = () => {
 {/* ---------------- Sorting  ---------------  */}
       <div id="sortingSelect" className="divSelect">
         <p>Sorting</p>
-        <input type="checkbox" name="lowToHigh" id="lowToHigh"/>
-        <label onClick={lowToHigh} type="checkbox">Price low to high</label>
+
+        <label onChange={(lth) => onLowToHigh(lth.target.value)} for="Low to high" className="sortingLabel">
+        <input type="radio" />Low to high</label>
+
+        <label for="High to low">
+        <input type="radio" />High to low</label>
+
+        <label for="New to old">
+        <input type="radio"/>New to old</label>
+
+        <label for="Old to new">
+        <input type="radio" /> Old to new </label>
+
       </div>
 
 {/* ---------------- Manufacturer ---------------  */}

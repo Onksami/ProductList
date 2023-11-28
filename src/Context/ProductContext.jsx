@@ -15,6 +15,8 @@ export default function ProductContextApp({ children }) {
 
   const [selectedTag, setSelectedTag] = useState("");
 
+  const [sort, setSort] = useState("");
+
   useEffect(() => {
     const pItemType = selectedItemType ? `&itemType=${selectedItemType}` : "";
     const pSelectedManufacturer = selectedManufacturer
@@ -23,15 +25,17 @@ export default function ProductContextApp({ children }) {
 
     const pSelectedTag = selectedTag ? `&tags_like=${selectedTag}` : "";
 
+    const pSort = sort ? `&_sort=price&_order=asc=${sort}` : "";
+
     fetch(
-      `http://localhost:3002/items?_page=${page}&_limit=${limit}${pItemType}${pSelectedManufacturer}${pSelectedTag}`
+      `http://localhost:3002/items?_page=${page}&_limit=${limit}${pItemType}${pSelectedManufacturer}${pSelectedTag}${pSort}`
     )
       .then((response) => response.json())
       .then((json) => {
         // console.log("json", json);
         setItems(json);
       });
-  }, [page, limit, selectedItemType, selectedManufacturer, selectedTag]); //call useEffect when page is changed
+  }, [page, limit, selectedItemType, selectedManufacturer, selectedTag, sort]); //call useEffect when page is changed
 
   return (
     <ProductContext.Provider
@@ -49,6 +53,9 @@ export default function ProductContextApp({ children }) {
         selectedManufacturer,
         selectedTag,
         setSelectedTag,
+        setSort,
+        sort
+        
       }}
     >
       {children}
