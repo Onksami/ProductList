@@ -72,8 +72,13 @@ function Filtration() {
 //Sorting function
 
 const onLowToHigh = (lth) => {
-  // console.log("onLimitClick", l);
-  productContext.setSort(lth); //function for limitation
+  // console.log("onLimitClick", lth);
+  productContext.setSortPriceLth(lth); //function for limitation
+};
+
+const onHighToLow = (htl) => {
+  // console.log("onLimitClick", htl);
+  productContext.setSortPriceHtl(htl); //function for limitation
 };
 
 // Rendering 
@@ -89,7 +94,7 @@ const onLowToHigh = (lth) => {
         <label onChange={(lth) => onLowToHigh(lth.target.value)} for="Low to high" className="sortingLabel">
         <input type="radio" />Low to high</label>
 
-        <label for="High to low">
+        <label onChange={(htl) => onHighToLow(htl.target.value)} for="High to low">
         <input type="radio" />High to low</label>
 
         <label for="New to old">

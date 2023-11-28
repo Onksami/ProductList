@@ -15,7 +15,9 @@ export default function ProductContextApp({ children }) {
 
   const [selectedTag, setSelectedTag] = useState("");
 
-  const [sort, setSort] = useState("");
+  const [sortPriceLth, setSortPriceLth] = useState("");
+  
+  // const [sortPriceHtl, setSortPriceHtl] = useState("");
 
   useEffect(() => {
     const pItemType = selectedItemType ? `&itemType=${selectedItemType}` : "";
@@ -25,17 +27,17 @@ export default function ProductContextApp({ children }) {
 
     const pSelectedTag = selectedTag ? `&tags_like=${selectedTag}` : "";
 
-    const pSort = sort ? `&_sort=price&_order=asc=${sort}` : "";
-
+    const pSortLth = sortPriceLth ? `&_sort=price&_order=asc=${sortPriceLth}` : "";
+    // const pSortHtl = sortPriceHtl ? `&_sort=price&_order=desc=${sortPriceHtl}` : "";
     fetch(
-      `http://localhost:3002/items?_page=${page}&_limit=${limit}${pItemType}${pSelectedManufacturer}${pSelectedTag}${pSort}`
+      `http://localhost:3002/items?_page=${page}&_limit=${limit}${pItemType}${pSelectedManufacturer}${pSelectedTag}${pSortLth}`
     )
       .then((response) => response.json())
       .then((json) => {
         // console.log("json", json);
         setItems(json);
       });
-  }, [page, limit, selectedItemType, selectedManufacturer, selectedTag, sort]); //call useEffect when page is changed
+  }, [page, limit, selectedItemType, selectedManufacturer, selectedTag, sortPriceLth]); //call useEffect when page is changed
 
   return (
     <ProductContext.Provider
@@ -53,8 +55,10 @@ export default function ProductContextApp({ children }) {
         selectedManufacturer,
         selectedTag,
         setSelectedTag,
-        setSort,
-        sort
+        setSortPriceLth,
+        sortPriceLth,
+        // sortPriceHtl,
+        // setSortPriceHtl
         
       }}
     >
