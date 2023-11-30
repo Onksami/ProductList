@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from "react";
 
 const ProductCard = (props) => {
-  const [data, setData] = useState([]);
+
+
+// Retrieve the number from local storage
+let storedTimestamp = props.item.added // Assuming 'timestamp' is the key where the number is stored
+let date = new Date(parseInt(storedTimestamp, 10));
+
+console.log("converted date", date);
+
+  
+
 
   return (
     <div className="product-card">
-      <span>{props.item.added}</span>
+     <span>{date.toString()}</span>
       <h3>
         {" "}
         <b> {props.item.name}</b>

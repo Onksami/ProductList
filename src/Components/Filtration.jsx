@@ -49,37 +49,35 @@ function Filtration() {
       });
   }, []);
 
-
-
-
 // ----------------- functions -----------------------
 
   const onItemTypeChangeHandler = (event) => {
     productContext.setSelectedItemType(event.target.value);
-    console.log("User Selected an itemtype - ", event.target.value);
+    // console.log("User Selected an itemtype - ", event.target.value);
   };
 
   const onCompanyChangeHandler = (event) => {
     productContext.setSelectedManufacturer(event.target.value);
-    console.log("User Selected Company - ", event.target.value);
+    // console.log("User Selected Company - ", event.target.value);
   };
 
   const onTagHandler = (event) => {
     productContext.setSelectedTag(event.target.value);
-    console.log("Tags selected  - ", event.target.value);
+    // console.log("Tags selected  - ", event.target.value);
   };
 
 //Sorting function
 
 const onLowToHigh = (lth) => {
   // console.log("onLimitClick", lth);
-  productContext.setSortPriceLth(lth); //function for limitation
+  productContext.setSort(lth); 
+  productContext.setOrder(lth);
 };
 
-const onHighToLow = (htl) => {
-  // console.log("onLimitClick", htl);
-  productContext.setSortPriceHtl(htl); //function for limitation
-};
+// const onHighToLow = (htl) => {
+//   // console.log("onLimitClick", htl);
+//   productContext.setSortPriceHtl(htl); //function for limitation
+// };
 
 // Rendering 
 
@@ -94,7 +92,7 @@ const onHighToLow = (htl) => {
         <label onChange={(lth) => onLowToHigh(lth.target.value)} for="Low to high" className="sortingLabel">
         <input type="radio" />Low to high</label>
 
-        <label onChange={(htl) => onHighToLow(htl.target.value)} for="High to low">
+        <label  for="High to low">
         <input type="radio" />High to low</label>
 
         <label for="New to old">
