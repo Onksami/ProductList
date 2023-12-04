@@ -68,16 +68,30 @@ function Filtration() {
 
 //Sorting function
 
-const onLowToHigh = (lth) => {
+const onLowToHigh = () => {
   // console.log("onLimitClick", lth);
-  productContext.setSort(lth); 
-  productContext.setOrder(lth);
+  productContext.setSort("price"); 
+  productContext.setOrder("asc");
 };
 
-// const onHighToLow = (htl) => {
-//   // console.log("onLimitClick", htl);
-//   productContext.setSortPriceHtl(htl); //function for limitation
-// };
+const onHighToLow = () => {
+  // console.log("onLimitClick", lth);
+  productContext.setSort("price"); 
+  productContext.setOrder("desc");
+};
+
+const onNewToOld = () => {
+  // console.log("onLimitClick", lth);
+  productContext.setSort("added"); 
+  productContext.setOrder("asc");
+};
+
+const onOldToNew = () => {
+  // console.log("onLimitClick", lth);
+  productContext.setSort("added"); 
+  productContext.setOrder("desc");
+};
+
 
 // Rendering 
 
@@ -89,17 +103,17 @@ const onLowToHigh = (lth) => {
       <div id="sortingSelect" className="divSelect">
         <p>Sorting</p>
 
-        <label onChange={(lth) => onLowToHigh(lth.target.value)} for="Low to high" className="sortingLabel">
-        <input type="radio" />Low to high</label>
+        <label  for="Low to high" className="sortingLabel">
+        <input onChange={onLowToHigh} type="radio" />Low to high</label>
 
         <label  for="High to low">
-        <input type="radio" />High to low</label>
+        <input onChange={onHighToLow} type="radio" />High to low</label>
 
         <label for="New to old">
-        <input type="radio"/>New to old</label>
+        <input onChange={onNewToOld} type="radio"/>New to old</label>
 
         <label for="Old to new">
-        <input type="radio" /> Old to new </label>
+        <input onChange={onOldToNew} type="radio" /> Old to new </label>
 
       </div>
 

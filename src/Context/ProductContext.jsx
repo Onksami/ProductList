@@ -27,13 +27,15 @@ export default function ProductContextApp({ children }) {
 
     const pSelectedTag = selectedTag ? `&tags_like=${selectedTag}` : "";
     const pSort = sort
-      ? `&_sort=price&_order=desc${sort}`
+      ? `&_sort=${sort}`
       : "";
+
+      console.log(" context pSort", pSort);
     const pOrder = order
-      ? `&_order=asc${order}`
+      ? `&_order=${order}`
       : "";
     fetch(
-      `http://localhost:3002/items?_page=${page}&_limit=${limit}${pItemType}${pSelectedManufacturer}${pSelectedTag}${pSort}`
+      `http://localhost:3002/items?_page=${page}&_limit=${limit}${pItemType}${pSelectedManufacturer}${pSelectedTag}${pSort}${pOrder}`
     )
       .then((response) => response.json())
       .then((json) => {
