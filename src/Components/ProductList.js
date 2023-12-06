@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import Header from "./Header";
 import ProductCard from "./ProductCard";
 import { ProductContext } from "../Context/ProductContext";
@@ -8,7 +8,7 @@ function ProductList(props) {
   return (
     <>
       <Header />
-      <hr />
+     
 
       <div className="products-container">
         {productsContext.products.map((product, index) => {

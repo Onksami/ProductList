@@ -1,23 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../Context/ProductContext";
 
-
-
 function Filtration() {
-
-
   // variables
 
   const [companies, setCompanies] = useState([]);
   const [itemType, setItemTypes] = useState([]);
   const [tags, setTags] = useState([]);
 
-  
-
   const productContext = useContext(ProductContext);
   console.log("Filtration  productContext:", productContext);
-
-
 
   // get companies request
   useEffect(() => {
@@ -49,7 +41,7 @@ function Filtration() {
       });
   }, []);
 
-// ----------------- functions -----------------------
+  // ----------------- functions -----------------------
 
   const onItemTypeChangeHandler = (event) => {
     productContext.setSelectedItemType(event.target.value);
@@ -66,60 +58,64 @@ function Filtration() {
     // console.log("Tags selected  - ", event.target.value);
   };
 
-//Sorting function
+  //Sorting function
 
-const onLowToHigh = () => {
-  // console.log("onLimitClick", lth);
-  productContext.setSort("price"); 
-  productContext.setOrder("asc");
-};
+  const onLowToHigh = () => {
+    // console.log("onLimitClick", lth);
+    productContext.setSort("price");
+    productContext.setOrder("asc");
+  };
 
-const onHighToLow = () => {
-  // console.log("onLimitClick", lth);
-  productContext.setSort("price"); 
-  productContext.setOrder("desc");
-};
+  const onHighToLow = () => {
+    // console.log("onLimitClick", lth);
+    productContext.setSort("price");
+    productContext.setOrder("desc");
+  };
 
-const onNewToOld = () => {
-  // console.log("onLimitClick", lth);
-  productContext.setSort("added"); 
-  productContext.setOrder("asc");
-};
+  const onNewToOld = () => {
+    // console.log("onLimitClick", lth);
+    productContext.setSort("added");
+    productContext.setOrder("desc");
+  };
 
-const onOldToNew = () => {
-  // console.log("onLimitClick", lth);
-  productContext.setSort("added"); 
-  productContext.setOrder("desc");
-};
+  const onOldToNew = () => {
+    // console.log("onLimitClick", lth);
+    productContext.setSort("added");
+    productContext.setOrder("asc");
+  };
 
-
-// Rendering 
+  // Rendering
 
   return (
     <>
+      {/* ---------------- Sorting  ---------------  */}
+      <div id="sortingSelect" className="sortingDiv">
+        <span>Sorting</span>
 
+        <label for="Low to high">
+          <input name="sortingCheck" onChange={onLowToHigh} type="radio" />
+          Price low to high
+        </label>
 
-{/* ---------------- Sorting  ---------------  */}
-      <div id="sortingSelect" className="divSelect">
-        <p>Sorting</p>
-
-        <label  for="Low to high" className="sortingLabel">
-        <input onChange={onLowToHigh} type="radio" />Low to high</label>
-
-        <label  for="High to low">
-        <input onChange={onHighToLow} type="radio" />High to low</label>
+        <label for="High to low">
+          <input name="sortingCheck" onChange={onHighToLow} type="radio" />
+         Price high to low
+        </label>
 
         <label for="New to old">
-        <input onChange={onNewToOld} type="radio"/>New to old</label>
+          <input name="sortingCheck" onChange={onNewToOld} type="radio" />
+          New to old
+        </label>
 
         <label for="Old to new">
-        <input onChange={onOldToNew} type="radio" /> Old to new </label>
-
+          <input name="sortingCheck" onChange={onOldToNew} type="radio" /> Old to new{" "}
+        </label>
       </div>
 
-{/* ---------------- Manufacturer ---------------  */}
-<div className="divSelect" id="divManufacturerSelect">
-        <p>Brands</p>
+      {/* ---------------- Manufacturer ---------------  */}
+      <div className="divSelect" id="divManufacturerSelect">
+        <label>Brands</label>
+        <input id="manSearch" type="text" placeholder="Search Brands"></input>
 
         {companies.map((company, index) => {
           return (
@@ -152,9 +148,8 @@ const onOldToNew = () => {
         </select>
       </div>
 
-
-{/* ---------------- Tags ---------------  */}
-<div className="divSelect" id="divTagSelect">
+      {/* ---------------- Tags ---------------  */}
+      <div className="divSelect" id="divTagSelect">
         <p>Tags</p>
         {tags.map((tag, index) => {
           return (
@@ -163,16 +158,14 @@ const onOldToNew = () => {
                 value={tag}
                 onChange={onTagHandler}
                 type="checkbox"
-                checked={
-                  productContext.selectedTag === tag ? true : false
-                }
+                checked={productContext.selectedTag === tag ? true : false}
               />
               <label for="tag">{tag}</label>
             </div>
           );
         })}
 
-        <select onChange={onTagHandler} >
+        <select onChange={onTagHandler}>
           <option>Please choose one Tag</option>
 
           {tags.map((tag, index) => {
@@ -185,8 +178,7 @@ const onOldToNew = () => {
         </select>
       </div>
 
-
-{/* ---------------- Product Type ---------------  */}
+      {/* ---------------- Product Type ---------------  */}
       <div className="divSelect" id="divProductSelect">
         <p>Products Type</p>
         <select onChange={onItemTypeChangeHandler}>
@@ -199,7 +191,6 @@ const onOldToNew = () => {
             : ""}
         </select>
       </div>
-
     </>
   );
 }
