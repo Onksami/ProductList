@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+
 }
 
 .App-logo {
@@ -44,6 +44,8 @@
 /* -------------- Header - Start ---------   */
 
 .header{
+  position: absolute;
+  width: 100%;
   display: flex;
   align-items: center;
   background-color: #1EA4CE;
@@ -77,107 +79,146 @@
 
 /* -------------- Sidebar - Start ---------   */
 
-.sidebar{
-  display: block;
-  align-items: center;
-  width: 400px;
-  border: 1px solid blue;
-  background-color: #bab8b8;
-}
 
-
-.sortingDiv{
-
-
-  height: 214px;
-  margin-left: 30px;
-  margin-top: 20px;
-  margin-right: 10px;
-  background-color: white;
-  color: black;
-}
-
-.sortingDiv span{
-
-
-}
-
-.sortingDiv label{
-display: flex;
-gap: 5px;
-
-}
-
-.divSelect{
-
-  height: 300px;
-  margin-top: 30px;
+.sortingComp {
+  margin-top: 100px;
   margin-left: 50px;
-  margin-right: 5px;
-  color: black;
+  margin-right: 10px;
+  height: 217px;
+}
+
+.sortingComp .sortingList {
+align-items: center;
+background-color: #fff;
+margin-left: 20px;
+}
+
+.sortingComp p{
+
+}
+
+.sortingComp label{
+  display: flex;
+  margin-top: 15px;
+  margin-left: 10px;
+  gap: 5px;
+
+}
+
+.sortingComp label input{
+    
+  }
+
+ /* -------------------------- */
+
+#brandsHeader{
+  margin-left: 50px;
+}
+
+.manSearch{
+  margin-left: 50px;
+}
+
+.manComp {
+  min-height: 274px;
+  margin-top: 5px;
+  margin-left: 30px;
+  margin-right: 10px;
+  width: 296px;
+  /* background: gray; */
+  height: 100px;
   overflow: scroll;
 
 }
 
-
-
-
-#divProductSelect{
-
-  background: #d2cdcd;
+.manComp p {
+  /* background-color: blue; */
   
   }
 
-  #divManufacturerSelect{
-    background: #a19b9b;
+.manComp input {
+/* background-color: rgb(168, 199, 168); */
+margin-top: 3px;
+justify-content: center;
+align-items: center;
+
+
+}
+
+.manComp .manCompListing{
+/* background-color: yellow; */
   
   }
 
-  #divManufacturerSelect label{
-    width: 80%;
-  
-  }
+
+ /* -------------------------- */
+
+#tagsHeader{
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.tagsInput{
+  margin-left: 50px;
+}
+
+.tagsComp {
+  margin-top: 10px;
+  margin-left: 30px;
+  width: 296px;
+  height: 274px;
+  /* background: orange; */
+  overflow: scroll;
+
+}
+
+.tagsComp p {
+
+  /* background: rgb(74, 73, 71); */
+
+}
+
+.tagsComp .tagsCompListing {
+
+  /* background: rgb(167, 197, 211); */
+  font-size: 16px;
+  width: 99px;
+  margin-top: 5px;
 
 
-  #divManufacturerSelect input{
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-  
-  }
-  
-  #divTagsSelect{
+}
 
-    background: #a19b9b;
-    
-    
-  }
+.tagsComp input {
 
-  #tagsElement{
-    display: flex;
-    height: auto;
-    width: auto;
-    background: #a19b9b;
-
-  }
-  #tagsElement label{
-    height: auto;
-    width: auto;
-  
-
-  }
+  /* background: rgb(74, 73, 71); */
 
 
-  div p {
-    
-    margin-top: 1px;
-    margin-left: 1px;
-  }
+}
+
+.tagsComp label {
+
+  /* background: rgb(74, 73, 71); */
+
+}
+
+
+
+
+
 
 
 
   /* ------------- Side Bar -  End ------------- */
 
+
+  /* ------------- Product List - Start ------------- */
+
+.productList{
+  margin-top: 80px;
+}
+
+
+  /* ------------- Product List - End ------------- */
 
   /* ------------- Product Card - Start ------------- */
 

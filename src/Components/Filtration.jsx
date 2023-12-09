@@ -89,53 +89,48 @@ function Filtration() {
   return (
     <>
       {/* ---------------- Sorting  ---------------  */}
-      <div id="sortingSelect" className="sortingDiv">
-        <span>Sorting</span>
+      
+      <div className="sortingComp">
+        <p>Sorting</p>
+        <div className="sortingList">
+          <label for="Low to high">
+            <input name="sortingCheck" onChange={onLowToHigh} type="radio" />
+            Price low to high
+          </label>
 
-        <label for="Low to high">
-          <input name="sortingCheck" onChange={onLowToHigh} type="radio" />
-          Price low to high
-        </label>
+          <label for="High to low">
+            <input name="sortingCheck" onChange={onHighToLow} type="radio" />
+          Price high to low
+          </label>
 
-        <label for="High to low">
-          <input name="sortingCheck" onChange={onHighToLow} type="radio" />
-         Price high to low
-        </label>
+          <label for="New to old">
+            <input name="sortingCheck" onChange={onNewToOld} type="radio" />
+            New to old
+          </label>
 
-        <label for="New to old">
-          <input name="sortingCheck" onChange={onNewToOld} type="radio" />
-          New to old
-        </label>
-
-        <label for="Old to new">
-          <input name="sortingCheck" onChange={onOldToNew} type="radio" /> Old to new{" "}
-        </label>
+          <label for="Old to new">
+            <input name="sortingCheck" onChange={onOldToNew} type="radio" /> Old to new{" "}
+          </label>
+        </div>
       </div>
 
       {/* ---------------- Manufacturer ---------------  */}
-      <div className="divSelect" id="divManufacturerSelect">
-        <label>Brands</label>
-        <input id="manSearch" type="text" placeholder="Search Brands"></input>
-
+      <p id="brandsHeader">Brands</p>
+      <input className="manSearch" type="text" placeholder="Search Brands"></input>
+      
+      <div className="manComp">
+        
         {companies.map((company, index) => {
           return (
-            <div key={index}>
-              <input
-                value={company.slug}
-                onChange={onCompanyChangeHandler}
-                type="checkbox"
-                checked={
-                  productContext.selectedManufacturer === company.slug
-                    ? true
-                    : false
-                }
-              />
+            <div className="manCompListing" key={index}>
+              <input value={company.slug} onChange={onCompanyChangeHandler} type="checkbox" checked={productContext.selectedManufacturer === company.slug ? true : false}/>
               <label for="scales">{company.name}</label>
+
             </div>
           );
         })}
 
-        <select onChange={onCompanyChangeHandler}>
+        {/* <select onChange={onCompanyChangeHandler}>
           <option>Please choose one manufacturer</option>
 
           {companies.map((company, index) => {
@@ -145,27 +140,26 @@ function Filtration() {
               </option>
             );
           })}
-        </select>
+        </select> */}
       </div>
 
       {/* ---------------- Tags ---------------  */}
-      <div className="divSelect" id="divTagSelect">
-        <p>Tags</p>
+      
+      <p id="tagsHeader">Tags</p>
+      <input className="tagsInput" type="text" placeholder="Search tags"></input>
+      <div className="tagsComp">
+        
+  
         {tags.map((tag, index) => {
           return (
-            <div key={index} id="tagsElement">
-              <input
-                value={tag}
-                onChange={onTagHandler}
-                type="checkbox"
-                checked={productContext.selectedTag === tag ? true : false}
-              />
+            <div className="tagsCompListing" key={index}>
+              <input value={tag} onChange={onTagHandler} type="checkbox" checked={productContext.selectedTag === tag ? true : false}/>
               <label for="tag">{tag}</label>
             </div>
           );
         })}
 
-        <select onChange={onTagHandler}>
+        {/* <select onChange={onTagHandler}>
           <option>Please choose one Tag</option>
 
           {tags.map((tag, index) => {
@@ -175,11 +169,11 @@ function Filtration() {
               </option>
             );
           })}
-        </select>
+        </select> */}
       </div>
 
-      {/* ---------------- Product Type ---------------  */}
-      <div className="divSelect" id="divProductSelect">
+      {/* ---------- Product Type (moved to ProductList.js) ---------------  */}
+      {/* <div>
         <p>Products Type</p>
         <select onChange={onItemTypeChangeHandler}>
           <option>Please choose one Item Type</option>
@@ -190,7 +184,7 @@ function Filtration() {
               })
             : ""}
         </select>
-      </div>
+      </div> */}
     </>
   );
 }

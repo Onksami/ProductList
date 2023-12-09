@@ -5,6 +5,9 @@ import Pagination from "./Components/Pagination";
 import { useContext } from "react";
 import { ProductContext } from "./Context/ProductContext";
 import Sidebar from "./Components/Sidebar";
+import Header from "./Components/Header";
+
+
 
 
 function App() {
@@ -13,11 +16,12 @@ function App() {
      
       <div className="app-container">
       <div className="header">
+        <Header />
         </div>
         <div className="sidebar">
           <Sidebar />
         </div>
-        <div>
+        <div className="productList">
           <ProductList />
 
           <Pagination />
