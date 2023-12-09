@@ -5,7 +5,7 @@ function Filtration() {
   // variables
 
   const [companies, setCompanies] = useState([]);
-  const [itemType, setItemTypes] = useState([]);
+  // const [itemType, setItemTypes] = useState([]);
   const [tags, setTags] = useState([]);
 
   const productContext = useContext(ProductContext);
@@ -22,14 +22,14 @@ function Filtration() {
   }, []);
 
   // get itemType request
-  useEffect(() => {
-    fetch(`http://localhost:3002/itemType`)
-      .then((response) => response.json())
-      .then((itemType) => {
-        // console.log("Item Type geldi ", itemType);
-        setItemTypes(itemType);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:3002/itemType`)
+  //     .then((response) => response.json())
+  //     .then((itemType) => {
+  //       // console.log("Item Type geldi ", itemType);
+  //       setItemTypes(itemType);
+  //     });
+  // }, []);
 
   // get tags request
   useEffect(() => {
@@ -43,10 +43,10 @@ function Filtration() {
 
   // ----------------- functions -----------------------
 
-  const onItemTypeChangeHandler = (event) => {
-    productContext.setSelectedItemType(event.target.value);
-    // console.log("User Selected an itemtype - ", event.target.value);
-  };
+  // const onItemTypeChangeHandler = (event) => {
+  //   productContext.setSelectedItemType(event.target.value);
+  //   // console.log("User Selected an itemtype - ", event.target.value);
+  // };
 
   const onCompanyChangeHandler = (event) => {
     productContext.setSelectedManufacturer(event.target.value);
