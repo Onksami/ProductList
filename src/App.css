@@ -79,9 +79,13 @@
 
 /* -------------- Sidebar - Start ---------   */
 
+.sidebar{
+  margin-top: 77px;
+  background: #f3f1f1;
+}
 
 .sortingComp {
-  margin-top: 100px;
+  margin-top: 20px;
   margin-left: 50px;
   margin-right: 10px;
   height: 217px;
@@ -128,6 +132,7 @@ margin-left: 20px;
   /* background: gray; */
   height: 100px;
   overflow: scroll;
+  background: #fff;
 
 }
 
@@ -141,6 +146,7 @@ margin-left: 20px;
 margin-top: 3px;
 justify-content: center;
 align-items: center;
+
 
 
 }
@@ -160,6 +166,7 @@ align-items: center;
 
 .tagsInput{
   margin-left: 50px;
+  font-size:large;
 }
 
 .tagsComp {
@@ -167,14 +174,14 @@ align-items: center;
   margin-left: 30px;
   width: 296px;
   height: 274px;
-  /* background: orange; */
+  background: #fff;
   overflow: scroll;
 
 }
 
 .tagsComp p {
 
-  /* background: rgb(74, 73, 71); */
+
 
 }
 
@@ -184,6 +191,7 @@ align-items: center;
   font-size: 16px;
   width: 99px;
   margin-top: 5px;
+  font-size:large;
 
 
 }

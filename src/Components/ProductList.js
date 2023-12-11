@@ -13,7 +13,7 @@ function ProductList(props) {
 
     // get itemType request
     useEffect(() => {
-      fetch(`http://localhost:3002/itemType`)
+      fetch(`https://e-commerce-jsondb.vercel.app/itemType`)
         .then((response) => response.json())
         .then((itemType) => {
           // console.log("Item Type geldi ", itemType);

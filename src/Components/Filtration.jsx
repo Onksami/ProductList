@@ -8,12 +8,14 @@ function Filtration() {
   // const [itemType, setItemTypes] = useState([]);
   const [tags, setTags] = useState([]);
 
+  // const [filteredValue, setFilteredValue] = useState([]);
+
   const productContext = useContext(ProductContext);
   console.log("Filtration  productContext:", productContext);
 
   // get companies request
   useEffect(() => {
-    fetch(`http://localhost:3002/companies`)
+    fetch(`https://e-commerce-jsondb.vercel.app/companies`)
       .then((response) => response.json())
       .then((c) => {
         // console.log("Companies ", c);
@@ -23,7 +25,7 @@ function Filtration() {
 
   // get itemType request
   // useEffect(() => {
-  //   fetch(`http://localhost:3002/itemType`)
+  //   fetch(`https://e-commerce-jsondb.vercel.app/itemType`)
   //     .then((response) => response.json())
   //     .then((itemType) => {
   //       // console.log("Item Type geldi ", itemType);
@@ -33,7 +35,7 @@ function Filtration() {
 
   // get tags request
   useEffect(() => {
-    fetch(`http://localhost:3002/tags`)
+    fetch(`https://e-commerce-jsondb.vercel.app/tags`)
       .then((response) => response.json())
       .then((t) => {
         // console.log("Tagslar geldi ", t);

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { baseURL } from "../constants";
+
 
 export const ProductContext = React.createContext();
 
@@ -35,7 +37,7 @@ export default function ProductContextApp({ children }) {
       ? `&_order=${order}`
       : "";
     fetch(
-      `http://localhost:3002/items?_page=${page}&_limit=${limit}${pItemType}${pSelectedManufacturer}${pSelectedTag}${pSort}${pOrder}`
+      `${baseURL}/items?_page=${page}&_limit=${limit}${pItemType}${pSelectedManufacturer}${pSelectedTag}${pSort}${pOrder}`
     )
       .then((response) => response.json())
       .then((json) => {
