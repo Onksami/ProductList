@@ -90,6 +90,9 @@ function Filtration() {
 
   return (
     <>
+
+    
+
       {/* ---------------- Sorting  ---------------  */}
       
       <div className="sortingComp">
