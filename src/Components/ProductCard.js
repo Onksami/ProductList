@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 const ProductCard = (props) => {
 
 
+
   //Lorem Picsum Images (chatgpt) 
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
 
   // useEffect(() => {
   //   const fetchImages = async () => {
@@ -40,9 +41,11 @@ let date = new Date(parseInt(storedTimestamp, 10));
   return (
     <div className="product-card">
       
-    {/* <div className="pcImage">
+    <div className="pcImage">
+
+      <img alt="asd" src="https://picsum.photos/id/83/200/300"/>
     
-        {images.map((image, index) => (
+        {/* {images.map((image, index) => (
           <img
             key={index}
             src={image.download_url}
@@ -50,8 +53,8 @@ let date = new Date(parseInt(storedTimestamp, 10));
             width={10}
             height={10}
           />
-        ))}
-    </div> */}
+        ))} */}
+    </div>
 
     <div className="pcPrice">
      ₺ {props.item.price}

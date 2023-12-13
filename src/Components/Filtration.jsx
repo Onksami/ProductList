@@ -86,6 +86,11 @@ function Filtration() {
     productContext.setOrder("asc");
   };
 
+
+
+
+
+
   // Rendering
 
   return (
@@ -99,22 +104,22 @@ function Filtration() {
         <p>Sorting</p>
         <div className="sortingList">
           <label for="Low to high">
-            <input name="sortingCheck" onChange={onLowToHigh} type="radio" />
+            <input name="sortingCheck"  onChange={onLowToHigh} type="radio"  />
             Price low to high
           </label>
 
           <label for="High to low">
-            <input name="sortingCheck" onChange={onHighToLow} type="radio" />
+            <input name="sortingCheck" className="radioBtn" onChange={onHighToLow} type="radio" />
           Price high to low
           </label>
 
           <label for="New to old">
-            <input name="sortingCheck" onChange={onNewToOld} type="radio" />
+            <input name="sortingCheck" className="radioBtn" onChange={onNewToOld} type="radio" />
             New to old
           </label>
 
           <label for="Old to new">
-            <input name="sortingCheck" onChange={onOldToNew} type="radio" /> Old to new{" "}
+            <input name="sortingCheck" className="radioBtn" onChange={onOldToNew} type="radio" /> Old to new{" "}
           </label>
         </div>
       </div>
