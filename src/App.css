@@ -2,6 +2,8 @@
 
 }
 
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -288,6 +290,7 @@ align-items: center;
   /* ------------- Product Card - End ------------- */
 
 
+  /* -------------- Pagination - Start ---------   */
 
 
 .pagination-container{
@@ -327,5 +330,36 @@ align-items: center;
   align-items: center;
 }
 
+/* -------------- Pagination - End ---------   */
 
 
+/* -------------- Shopping Card - Start ---------   */
+
+.shoppingCard{
+  margin-top: 200px;
+  background-color: #282c34;
+  color: #fff;
+  width: 296px;
+  height: 338px;
+  margin-left: 10px;
+  margin-right: 50px;
+}
+
+.shoppingCard .addedProducts{
+  background: rgb(88, 160, 136);
+  color: purple;
+  width: 100%;
+  height: 260px;
+
+}
+
+.shoppingCard .priceTotal{
+  margin-top: 10px;
+  background: orange;
+  color: purple;
+  width: 92px;
+  height: 51px;
+  margin-left: 180px;
+
+
+}

@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { ProductContext } from "./Context/ProductContext";
 import Sidebar from "./Components/Sidebar";
 import Header from "./Components/Header";
+import ShoppingCard from "./Components/ShoppingCard";
 
 
 
@@ -25,7 +26,14 @@ function App() {
           <ProductList />
 
           <Pagination />
+
+          
         </div>
+
+        <div>
+          <ShoppingCard />
+        </div>
+
       </div>
     </div>
   );
