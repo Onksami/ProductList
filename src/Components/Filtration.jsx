@@ -52,7 +52,6 @@ function Filtration() {
 
   const onCompanyChangeHandler = (event) => {
     productContext.setSelectedManufacturer(event.target.value);
-    // console.log("User Selected Company - ", event.target.value);
   };
 
   const onTagHandler = (event) => {
@@ -87,16 +86,30 @@ function Filtration() {
   };
 
 
+//Clear Filtration function
 
 
+const clearFiltration = () => {
+  productContext.setSelectedManufacturer("");
+  productContext.setSelectedTag("");
+  productContext.setSort("");
+  productContext.setOrder("");
+
+ 
+}
 
 
   // Rendering
 
   return (
     <>
-
+     {/* ---------------- Clear Button  ---------------  */}
     
+    
+      <button className="filtrationClear" onClick={clearFiltration}>
+       clear filters
+      </button>
+  
 
       {/* ---------------- Sorting  ---------------  */}
       
@@ -104,7 +117,7 @@ function Filtration() {
         <p>Sorting</p>
         <div className="sortingList">
           <label for="Low to high">
-            <input name="sortingCheck"  onChange={onLowToHigh} type="radio"  />
+            <input name="sortingCheck"   onChange={onLowToHigh} type="radio"  />
             Price low to high
           </label>
 
@@ -133,7 +146,7 @@ function Filtration() {
         {companies.map((company, index) => {
           return (
             <div className="manCompListing" key={index}>
-              <input value={company.slug} onChange={onCompanyChangeHandler} type="checkbox" checked={productContext.selectedManufacturer === company.slug ? true : false}/>
+              <input value={company.slug} onChange={onCompanyChangeHandler} type="checkbox"  checked={productContext.selectedManufacturer === company.slug ? true : false}/>
               <label for="scales">{company.name}</label>
 
             </div>

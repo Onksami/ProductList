@@ -79,6 +79,16 @@
 
 /* -------------- Sidebar - Start ---------   */
 
+.filtrationClear{
+  margin-top: 15px;
+  margin-left: 15px;
+  background-color: #fff;
+  color: #282c34;
+  border: 1px solid #282c34;
+  border-radius: 20px;
+  
+}
+
 .sidebar{
   margin-top: 77px;
   background: #f3f1f1;
