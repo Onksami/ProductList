@@ -33,7 +33,7 @@ function ProductList(props) {
     <div>
         <p>Products</p>
         <select onChange={onItemTypeChangeHandler}>
-          <option>Please choose one Item Type</option>
+          {/* <option>Please choose one Item Type</option> */}
 
           {itemType.length > 0
             ? itemType.map((itemType, index) => {
@@ -49,6 +49,7 @@ function ProductList(props) {
           return <ProductCard key={index} item={product} />;
         })}
       </div>
+      
     </>
   );
 }

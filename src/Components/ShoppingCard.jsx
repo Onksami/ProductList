@@ -1,20 +1,20 @@
 import React from 'react'
+import ShoppingCartList from './ShoppingCartList'
+
+
 
 function ShoppingCard() {
+
+// Variables
+
+
+
+
   return (
     <div className='shoppingCard'>
-        <div className='addedProducts'>
 
-        Added products will be here
-        <hr />
-        <br />
-        <b> create a new branch for Shopping card!!!! </b>
-       
-        </div>
-        
-        <div className='priceTotal'>
-            ₺ 100
-        </div>
+        <ShoppingCartList />
+
     </div>
   )
 }

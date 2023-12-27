@@ -30,6 +30,11 @@ export default function ProductContextApp({ children }) {
 
   const [order, setOrder] = useState(storedFilterValues.order);
 
+  const [addToCardProduct, setAddToCardProduct] = useState("");
+
+  const [addToCardPrice, setAddToCardPrice] = useState("");
+
+  const [shoppingCard, setShoppingCard] = useState("");
 
 
   useEffect(() => {
@@ -89,7 +94,14 @@ export default function ProductContextApp({ children }) {
         setSort,
         sort,
         setOrder,
-        order
+        order,
+        setAddToCardProduct,
+        addToCardProduct,
+        setAddToCardPrice,
+        addToCardPrice,
+        setShoppingCard,
+        shoppingCard,
+
       }}
     >
       {children}
