@@ -34,8 +34,10 @@ export default function ProductContextApp({ children }) {
 
   const [addToCardPrice, setAddToCardPrice] = useState("");
 
-  const [shoppingCard, setShoppingCard] = useState("");
+  const [shoppingCard, setShoppingCard] = useState([]);
 
+
+  console.log("shopping card context", shoppingCard);
 
   useEffect(() => {
     

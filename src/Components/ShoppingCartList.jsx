@@ -8,9 +8,9 @@ function ShoppingCartList() {
     // console.log("ShoppingCartList" , productContext);
 
   const [quantity, setQuantity] = useState(1);
-  const productName = productContext.shoppingCard.name;
-  const price = productContext.shoppingCard.price; // You can set the price dynamically or statically
-  const totalPrice = price * quantity
+  // const productName = productContext.shoppingCard.name;
+  // const price = productContext.shoppingCard.price; // You can set the price dynamically or statically
+  // const totalPrice = price * quantity
 
 
 
@@ -24,16 +24,26 @@ function ShoppingCartList() {
     }
   };
 
+  console.log("shopping card coming? ", productContext.shoppingCard);
+
   return (
     <>
-      <div>{productName} <br />
-          Price: ${price * quantity}
-          <button onClick={decreaseQuantity}>-</button>
-          {quantity}
-          <button onClick={increaseQuantity}>+</button>
-      </div> 
+    {productContext.shoppingCard.map((product, index) =>{
+      return (
+        <div>{product.name} <br />
+        Price: ${product.price}
+
+
+        
+        <button onClick={decreaseQuantity}>-</button>
+        1
+        <button onClick={increaseQuantity}>+</button>
+    </div> 
+      )
+    } )}
+
       <div>
-        Total: {totalPrice}
+        Total: 
       </div>
 
 

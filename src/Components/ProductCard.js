@@ -20,7 +20,18 @@ let date = new Date(parseInt(storedTimestamp, 10));
 // Functions
 
 const shoppingCardAdd = () => {
-  productContext.setShoppingCard(props.item);
+  //get previous shopping card from context
+  const shoppingCard = [...productContext.shoppingCard];
+
+  console.log("shopping card before push", shoppingCard);
+
+  //push new item to previous shopping card
+  shoppingCard.push(props.item)
+  console.log("shopping card after push", shoppingCard);
+  
+  // set new shopping card to context state
+
+  productContext.setShoppingCard(shoppingCard);
   console.log("Add button clicked");
 }
 
