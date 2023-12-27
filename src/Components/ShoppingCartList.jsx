@@ -5,12 +5,12 @@ import { ProductContext } from "../Context/ProductContext";
 function ShoppingCartList() {
 
     const productContext = useContext(ProductContext);
-    console.log("ShoppingCartList" , productContext);
+    // console.log("ShoppingCartList" , productContext);
 
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const productName = productContext.shoppingCard.name;
   const price = productContext.shoppingCard.price; // You can set the price dynamically or statically
-
+  const totalPrice = price * quantity
 
 
 
@@ -27,13 +27,13 @@ function ShoppingCartList() {
   return (
     <>
       <div>{productName} <br />
-          Price: ${price}
+          Price: ${price * quantity}
           <button onClick={decreaseQuantity}>-</button>
           {quantity}
           <button onClick={increaseQuantity}>+</button>
       </div> 
       <div>
-        Total: {price}
+        Total: {totalPrice}
       </div>
 
 
