@@ -24,7 +24,7 @@ function ShoppingCartList() {
     // how to remove an object from array
   };
 
-  console.log("shopping card coming? ", productContext.shoppingCard);
+  // console.log("shopping card coming? ", productContext.shoppingCard);
 
   return (
     <>
