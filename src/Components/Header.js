@@ -1,4 +1,4 @@
-import React, {useContext } from "react";
+import React, {useContext,useState, useEffect } from "react";
 
 import { ProductContext } from "../Context/ProductContext";
 
@@ -6,7 +6,7 @@ import { ProductContext } from "../Context/ProductContext";
 function Header (props) {
 
   const productContext = useContext(ProductContext);
-  const price = productContext.shoppingCard.price; // You can set the price dynamically or statically
+
 
 
   return (
@@ -16,7 +16,7 @@ function Header (props) {
 
       <div className='total'>
         <img alt='' src='../Images/padlock.png'></img>
-        <span id='totalPrice'> ₺ {price} </span>
+        <span id='totalPrice'> ₺  </span>
       </div>
     </div>
 

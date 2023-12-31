@@ -2,11 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { ProductContext } from "../Context/ProductContext";
 
 const ProductCard = (props) => {
+
+  // console.log("props", props);
+
   //context
   const productContext = useContext(ProductContext);
   // console.log("ProuctCards  productContext:", productContext);
 
-  //function
 
   // Converting number to date
 
@@ -34,13 +36,27 @@ const ProductCard = (props) => {
       productContext.setShoppingCard(shoppingCard);
     }
 
-    // @todo calculate total prize and set to context
+  // @todo calculate total prize and set to context
+   // Calculate total price
+    const totalPrice = shoppingCard.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+        );
+
+    // Set the total price to context
+    productContext.setShoppingCard(shoppingCard);
+    productContext.setTotalPrice(totalPrice);
   };
+
+
+  
+
+  
 
   return (
     <div className="product-card">
       <div className="pcImage">
-        <img alt="asd" src="https://picsum.photos/id/83/200/300" />
+        <img alt="asd" src="https://picsum.photos/id/17/200/300" />
       </div>
 
       <div className="pcPrice">₺ {props.item.price}</div>

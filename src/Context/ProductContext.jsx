@@ -4,7 +4,7 @@ import { baseURL } from "../constants";
 
 export const ProductContext = React.createContext();
 
-const initialFilterValues = {selectedItemType: "" , selectedTag : "", selectedManufacturer: "", order: "" , sort:"", limit: 10, page:1}
+const initialFilterValues = {selectedItemType: "All" , selectedTag : "", selectedManufacturer: "", order: "" , sort:"", limit: 10, page:1}
 
 export default function ProductContextApp({ children }) {
 
@@ -35,6 +35,11 @@ export default function ProductContextApp({ children }) {
   const [addToCardPrice, setAddToCardPrice] = useState("");
 
   const [shoppingCard, setShoppingCard] = useState([]);
+
+  const [increaseBtn, setIncreaseBtn] = useState(0);
+
+  const [totalPrice, setTotalPrice] = useState(0);
+
 
 
   console.log("shopping card context", shoppingCard);
@@ -76,6 +81,8 @@ export default function ProductContextApp({ children }) {
     order,
   ]); //call useEffect when page is changed
 
+  
+
 
   return (
     <ProductContext.Provider
@@ -103,6 +110,11 @@ export default function ProductContextApp({ children }) {
         addToCardPrice,
         setShoppingCard,
         shoppingCard,
+        setIncreaseBtn,
+        increaseBtn,
+        setTotalPrice,
+        totalPrice,
+
 
       }}
     >

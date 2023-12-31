@@ -38,12 +38,13 @@ function Filtration() {
 
 
   const onCompanyChangeHandler = (event) => {
-    productContext.setSelectedManufacturer(event.target.value);
+    const selectedManufacturer = event.target.value === productContext.selectedManufacturer ? '' : event.target.value;
+    productContext.setSelectedManufacturer(selectedManufacturer);
   };
 
   const onTagHandler = (event) => {
-    productContext.setSelectedTag(event.target.value);
-    // console.log("Tags selected  - ", event.target.value);
+    const selectedTag = event.target.value === productContext.selectedTag ? '' : event.target.value;
+    productContext.setSelectedTag(selectedTag);
   };
 
   //Sorting function
