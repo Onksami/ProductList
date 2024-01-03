@@ -42,6 +42,7 @@ export default function ProductContextApp({ children }) {
 
 
 
+
   console.log("shopping card context", shoppingCard);
 
   useEffect(() => {

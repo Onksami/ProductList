@@ -7,9 +7,25 @@ function ShoppingCartList(props) {
   const productContext = useContext(ProductContext);
   // console.log("ShoppingCartList" , productContext);
   const shoppingCard = [...productContext.shoppingCard];
+
+  
+
   const addedItem = shoppingCard.find((item) => item.slug === item.slug);
   // const productName = productContext.shoppingCard.name;
 
+  // Retrieve shopping card from localStorage on component mount
+  useEffect(() => {
+    const storedShoppingCard = localStorage.getItem("shoppingCard");
+    if (storedShoppingCard) {
+      productContext.setShoppingCard(JSON.parse(storedShoppingCard));
+    }
+  }, []);
+
+  // Update localStorage whenever shopping card changes
+  useEffect(() => {
+    localStorage.setItem("shoppingCard", JSON.stringify(productContext.shoppingCard));
+  }, [productContext.shoppingCard]);
+  
 
 const increaseQuantity = (slug) => {
   const shoppingCard = [...productContext.shoppingCard];
