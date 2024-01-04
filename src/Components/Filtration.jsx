@@ -13,6 +13,7 @@ function Filtration() {
   const productContext = useContext(ProductContext);
   // console.log("Filtration  productContext:", productContext);
 
+  const [selectedOption, setSelectedOption] = useState(""); // State to manage the selected option
   // get companies request
   useEffect(() => {
     fetch(`https://e-commerce-jsondb.vercel.app/companies`)
@@ -53,24 +54,29 @@ function Filtration() {
     // console.log("onLimitClick", lth);
     productContext.setSort("price");
     productContext.setOrder("asc");
+    setSelectedOption("lowToHigh"); // Set the selected option state
   };
 
   const onHighToLow = () => {
     // console.log("onLimitClick", lth);
     productContext.setSort("price");
     productContext.setOrder("desc");
+    setSelectedOption("highToLow"); // Set the selected option state
   };
 
   const onNewToOld = () => {
     // console.log("onLimitClick", lth);
     productContext.setSort("added");
     productContext.setOrder("desc");
+    setSelectedOption("newToOld"); // Set the selected option state
   };
 
   const onOldToNew = () => {
     // console.log("onLimitClick", lth);
     productContext.setSort("added");
     productContext.setOrder("asc");
+    setSelectedOption("oldToNew"); // Set the selected option state
+    
   };
 
 
@@ -105,22 +111,22 @@ const clearFiltration = () => {
         <p>Sorting</p>
         <div className="sortingList">
           <label for="Low to high">
-            <input name="sortingCheck"   onChange={onLowToHigh} type="radio"  />
+            <input name="sortingCheck" onChange={onLowToHigh} type="radio" checked={selectedOption === "lowToHigh"} />
             Price low to high
           </label>
 
           <label for="High to low">
-            <input name="sortingCheck" className="radioBtn" onChange={onHighToLow} type="radio" />
+            <input name="sortingCheck" className="radioBtn" onChange={onHighToLow} type="radio" checked={selectedOption === "highToLow"}  />
           Price high to low
           </label>
 
           <label for="New to old">
-            <input name="sortingCheck" className="radioBtn" onChange={onNewToOld} type="radio" />
+            <input name="sortingCheck" className="radioBtn" onChange={onNewToOld} type="radio" checked={selectedOption === "newToOld"} />
             New to old
           </label>
 
           <label for="Old to new">
-            <input name="sortingCheck" className="radioBtn" onChange={onOldToNew} type="radio" /> Old to new{" "}
+            <input name="sortingCheck" className="radioBtn" onChange={onOldToNew} type="radio" checked={selectedOption === "oldToNew"} /> Old to new{" "}
           </label>
         </div>
       </div>

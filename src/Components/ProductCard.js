@@ -59,6 +59,8 @@ const ProductCard = (props) => {
         <img alt="asd" src="https://picsum.photos/id/17/200/300" />
       </div>
 
+   
+
       <div className="pcPrice">₺ {props.item.price}</div>
 
       <div className="pcName">{props.item.name}</div>

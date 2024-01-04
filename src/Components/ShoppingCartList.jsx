@@ -25,7 +25,7 @@ function ShoppingCartList(props) {
   useEffect(() => {
     localStorage.setItem("shoppingCard", JSON.stringify(productContext.shoppingCard));
   }, [productContext.shoppingCard]);
-  
+
 
 const increaseQuantity = (slug) => {
   const shoppingCard = [...productContext.shoppingCard];
@@ -57,7 +57,11 @@ const decreaseQuantity = (slug) => {
 };
 
 const total = productContext.shoppingCard.reduce(
-  (accumulator, product) => accumulator + product.price * product.quantity,
+  (accumulator, product) => {
+    const price = parseFloat(product.price);
+    const quantity = parseInt(product.quantity);
+    return accumulator + (price * quantity);
+  },
   0
 );
 
