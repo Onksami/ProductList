@@ -79,7 +79,7 @@ const total = productContext.shoppingCard.reduce(
         </div>
       );
     })}
-     <div>Total: ₺{total}</div>
+     <div>Total: ₺{total.toFixed(2)}</div>
   </>
   );
 }

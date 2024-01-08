@@ -3,12 +3,20 @@ import { ProductContext } from "../Context/ProductContext";
 
 const ProductCard = (props) => {
 
-  // console.log("props", props);
 
   //context
   const productContext = useContext(ProductContext);
   // console.log("ProuctCards  productContext:", productContext);
 
+  const [imageList, setImageList] = useState([]);
+
+  // Fetch list of images
+  useEffect(() => {
+    fetch("https://picsum.photos/v2/list?page=1&limit=1") // Fetch the default 30 items
+      .then((response) => response.json())
+      .then((data) => setImageList(data))
+      .catch((error) => console.error("Error fetching images", error));
+  }, []);
 
   // Converting number to date
 
@@ -48,18 +56,19 @@ const ProductCard = (props) => {
     productContext.setTotalPrice(totalPrice);
   };
 
+ 
 
-  
-
-  
 
   return (
     <div className="product-card">
-      <div className="pcImage">
-        <img alt="asd" src="https://picsum.photos/id/17/200/300" />
-      </div>
-
-   
+    <div>
+      {imageList.map((imageData, index) => (
+        <div key={imageData.id} className="pcImage">
+          <img key={index} alt={imageData.author} src={imageData.download_url} />
+        </div>
+      ))}
+    </div>
+ 
 
       <div className="pcPrice">₺ {props.item.price}</div>
 

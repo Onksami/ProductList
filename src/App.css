@@ -286,6 +286,12 @@ align-items: center;
 
   }
 
+  .product-card  .pcImage img {
+    cursor: pointer;
+    width: 40px;
+    height: 30px;
+  }
+
 
 
   /* ------------- Product Card - End ------------- */
