@@ -1,5 +1,4 @@
 import "./App.css";
-
 import ProductList from "./Components/ProductList";
 import Pagination from "./Components/Pagination";
 import { useContext } from "react";

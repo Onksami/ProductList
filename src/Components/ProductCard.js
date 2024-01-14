@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { ProductContext } from "../Context/ProductContext";
 
 const ProductCard = (props) => {
@@ -68,8 +69,9 @@ const ProductCard = (props) => {
         </div>
       ))}
     </div>
- 
-
+    <Link to={`/product/${props.item.slug}`}>
+        <button>Detail</button>
+    </Link>
       <div className="pcPrice">₺ {props.item.price}</div>
 
       <div className="pcName">{props.item.name}</div>
