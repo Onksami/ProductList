@@ -61,6 +61,7 @@ const total = productContext.shoppingCard.reduce(
     const price = parseFloat(product.price);
     const quantity = parseInt(product.quantity);
     return accumulator + (price * quantity);
+    
   },
   0
 );

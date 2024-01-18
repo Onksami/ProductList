@@ -6,6 +6,17 @@ import { ProductContext } from "../Context/ProductContext";
 function Header (props) {
 
   const productContext = useContext(ProductContext);
+  
+
+  const [totalPrice, setTotalPrice] = useState(productContext.totalPrice);
+
+  
+  useEffect(() => {
+    // Update local state when the context changes
+    setTotalPrice(productContext.totalPrice);
+  }, [productContext.totalPrice]);
+
+  console.log("productContext header ??? " , productContext);
 
 
 
@@ -16,7 +27,7 @@ function Header (props) {
 
       <div className='total'>
         <img alt='' src='../Images/padlock.png'></img>
-        <span id='totalPrice'> ₺  </span>
+        <span id='totalPrice'> ₺ {totalPrice.toFixed(2)}  </span>
       </div>
     </div>
 

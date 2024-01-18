@@ -12,16 +12,22 @@ const ProductCard = (props) => {
   const [imageList, setImageList] = useState([]);
 
   // Fetch list of images
+
+
   useEffect(() => {
-    fetch("https://picsum.photos/v2/list?page=1&limit=1") // Fetch the default 30 items
+    fetch("https://picsum.photos/v2/list?page=1&limit=1") 
       .then((response) => response.json())
       .then((data) => setImageList(data))
       .catch((error) => console.error("Error fetching images", error));
   }, []);
 
+
+
+
+
   // Converting number to date
 
-  let storedTimestamp = props.item.added; // Assuming 'timestamp' is the key where the number is stored
+  let storedTimestamp = props.item.added; 
   let date = new Date(parseInt(storedTimestamp, 10));
 
   // Functions
@@ -63,9 +69,9 @@ const ProductCard = (props) => {
   return (
     <div className="product-card">
     <div>
-      {imageList.map((imageData, index) => (
-        <div key={imageData.id} className="pcImage">
-          <img key={index} alt={imageData.author} src={imageData.download_url} />
+      {imageList.map((productImage, index) => (
+        <div key={productImage.id} className="pcImage">
+          <img key={index} alt={productImage.author} src={productImage.download_url} />
         </div>
       ))}
     </div>
