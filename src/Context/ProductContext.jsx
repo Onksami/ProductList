@@ -38,7 +38,7 @@ export default function ProductContextApp({ children }) {
 
   const [increaseBtn, setIncreaseBtn] = useState(0);
 
-  const [totalPrice, setTotalPrice] = useState(0);
+  // const [totalPrice, setTotalPrice] = useState(0);
 
 
 
@@ -82,6 +82,17 @@ export default function ProductContextApp({ children }) {
     order,
   ]); //call useEffect when page is changed
 
+  const totalPrice = shoppingCard.reduce(
+    (accumulator, product) => {
+      const price = parseFloat(product.price);
+      const quantity = parseInt(product.quantity);
+      return accumulator + (price * quantity);
+      
+      
+    },
+    0
+  );
+
   
 
 
@@ -113,7 +124,6 @@ export default function ProductContextApp({ children }) {
         shoppingCard,
         setIncreaseBtn,
         increaseBtn,
-        setTotalPrice,
         totalPrice,
 
 

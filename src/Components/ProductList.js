@@ -40,7 +40,7 @@ function ProductList(props) {
 
       <div className="products-container">
         {productsContext.products.map((product, index) => {
-          return <ProductCard key={index} item={product} />;
+          return <ProductCard key={index} item={product} index={index} />;
         })}
       </div>
     </>

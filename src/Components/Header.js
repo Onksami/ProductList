@@ -7,16 +7,8 @@ function Header (props) {
 
   const productContext = useContext(ProductContext);
   
+  const totalPrice = productContext.totalPrice;
 
-  const [totalPrice, setTotalPrice] = useState(productContext.totalPrice);
-
-  
-  useEffect(() => {
-    // Update local state when the context changes
-    setTotalPrice(productContext.totalPrice);
-  }, [productContext.totalPrice]);
-
-  console.log("productContext header ??? " , productContext);
 
 
 

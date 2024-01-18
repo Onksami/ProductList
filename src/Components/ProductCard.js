@@ -9,21 +9,6 @@ const ProductCard = (props) => {
   const productContext = useContext(ProductContext);
   // console.log("ProuctCards  productContext:", productContext);
 
-  const [imageList, setImageList] = useState([]);
-
-  // Fetch list of images
-
-
-  useEffect(() => {
-    fetch("https://picsum.photos/v2/list?page=1&limit=1") 
-      .then((response) => response.json())
-      .then((data) => setImageList(data))
-      .catch((error) => console.error("Error fetching images", error));
-  }, []);
-
-
-
-
 
   // Converting number to date
 
@@ -51,30 +36,19 @@ const ProductCard = (props) => {
       productContext.setShoppingCard(shoppingCard);
     }
 
-  // @todo calculate total prize and set to context
-   // Calculate total price
-    const totalPrice = shoppingCard.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-        );
 
     // Set the total price to context
     productContext.setShoppingCard(shoppingCard);
-    productContext.setTotalPrice(totalPrice);
   };
 
- 
+
 
 
   return (
     <div className="product-card">
-    <div>
-      {imageList.map((productImage, index) => (
-        <div key={productImage.id} className="pcImage">
-          <img key={index} alt={productImage.author} src={productImage.download_url} />
-        </div>
-      ))}
-    </div>
+
+<img alt="img" src={`https://picsum.photos/200/300?random=${props.index}`} />
+
     <Link to={`/product/${props.item.slug}`}>
         <button>Detail</button>
     </Link>

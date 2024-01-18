@@ -8,6 +8,9 @@ function ShoppingCartList(props) {
   // console.log("ShoppingCartList" , productContext);
   const shoppingCard = [...productContext.shoppingCard];
 
+  const totalPrice = productContext.totalPrice;
+  
+
   
 
   const addedItem = shoppingCard.find((item) => item.slug === item.slug);
@@ -56,15 +59,16 @@ const decreaseQuantity = (slug) => {
   }
 };
 
-const total = productContext.shoppingCard.reduce(
-  (accumulator, product) => {
-    const price = parseFloat(product.price);
-    const quantity = parseInt(product.quantity);
-    return accumulator + (price * quantity);
+// const total = productContext.shoppingCard.reduce(
+//   (accumulator, product) => {
+//     const price = parseFloat(product.price);
+//     const quantity = parseInt(product.quantity);
+//     return accumulator + (price * quantity);
     
-  },
-  0
-);
+    
+//   },
+//   0
+// );
 
   return (
     <>
@@ -80,7 +84,7 @@ const total = productContext.shoppingCard.reduce(
         </div>
       );
     })}
-     <div>Total: ₺{total.toFixed(2)}</div>
+     <div>Total: ₺{totalPrice.toFixed(2)}</div>
   </>
   );
 }
