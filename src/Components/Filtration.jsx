@@ -14,6 +14,11 @@ function Filtration() {
   // console.log("Filtration  productContext:", productContext);
 
   const [selectedOption, setSelectedOption] = useState(""); // State to manage the selected option
+  const [manufacturerSearch, setManufacturerSearch] = useState("");
+  const [tagSearch, setTagSearch] = useState("");
+ 
+ 
+ 
   // get companies request
   useEffect(() => {
     fetch(`https://e-commerce-jsondb.vercel.app/companies`)
@@ -133,75 +138,60 @@ const clearFiltration = () => {
 
       {/* ---------------- Manufacturer ---------------  */}
       <p id="brandsHeader">Brands</p>
-      <input className="manSearch" type="text" placeholder="Search Brands"></input>
-      
+      <input
+        className="manSearch"
+        type="text"
+        placeholder="Search Brands"
+        value={manufacturerSearch}
+        onChange={(e) => setManufacturerSearch(e.target.value)}
+      />
+
       <div className="manComp">
-        
-        {companies.map((company, index) => {
-          return (
+        {companies
+          .filter((company) =>
+            company.name.toLowerCase().includes(manufacturerSearch.toLowerCase())
+          )
+          .map((company, index) => (
             <div className="manCompListing" key={index}>
-              <input value={company.slug} onChange={onCompanyChangeHandler} type="checkbox"  checked={productContext.selectedManufacturer === company.slug ? true : false}/>
-              <label for="scales">{company.name}</label>
-
+              <input
+                value={company.slug}
+                onChange={onCompanyChangeHandler}
+                type="checkbox"
+                checked={productContext.selectedManufacturer === company.slug}
+              />
+              <label htmlFor="scales">{company.name}</label>
             </div>
-          );
-        })}
-
-        {/* <select onChange={onCompanyChangeHandler}>
-          <option>Please choose one manufacturer</option>
-
-          {companies.map((company, index) => {
-            return (
-              <option key={index} value={company.slug}>
-                {company.name}
-              </option>
-            );
-          })}
-        </select> */}
+          ))}
       </div>
 
       {/* ---------------- Tags ---------------  */}
       
+   
       <p id="tagsHeader">Tags</p>
-      <input className="tagsInput" type="text" placeholder="Search tags"></input>
+      <input
+        className="tagsInput"
+        type="text"
+        placeholder="Search tags"
+        value={tagSearch}
+        onChange={(e) => setTagSearch(e.target.value)}
+      />
+            
       <div className="tagsComp">
-        
-  
-        {tags.map((tag, index) => {
-          return (
+        {tags
+          .filter((tag) => tag.toLowerCase().includes(tagSearch.toLowerCase()))
+          .map((tag, index) => (
             <div className="tagsCompListing" key={index}>
-              <input value={tag} onChange={onTagHandler} type="checkbox" checked={productContext.selectedTag === tag ? true : false}/>
-              <label for="tag">{tag}</label>
+              <input
+                value={tag}
+                onChange={onTagHandler}
+                type="checkbox"
+                checked={productContext.selectedTag === tag}
+              />
+              <label htmlFor="tag">{tag}</label>
             </div>
-          );
-        })}
-
-        {/* <select onChange={onTagHandler}>
-          <option>Please choose one Tag</option>
-
-          {tags.map((tag, index) => {
-            return (
-              <option key={index} value={tag}>
-                {tag}
-              </option>
-            );
-          })}
-        </select> */}
+          ))}
       </div>
-
-      {/* ---------- Product Type (moved to ProductList.js) ---------------  */}
-      {/* <div>
-        <p>Products Type</p>
-        <select onChange={onItemTypeChangeHandler}>
-          <option>Please choose one Item Type</option>
-
-          {itemType.length > 0
-            ? itemType.map((itemType, index) => {
-                return <option key={index}>{itemType}</option>;
-              })
-            : ""}
-        </select>
-      </div> */}
+  
     </>
   );
 }
