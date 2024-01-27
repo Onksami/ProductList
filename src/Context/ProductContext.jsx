@@ -4,7 +4,7 @@ import { baseURL } from "../constants";
 
 export const ProductContext = React.createContext();
 
-const initialFilterValues = {selectedItemType: "All" , selectedTag : "", selectedManufacturer: "", order: "" , sort:"", limit: 10, page:1}
+const initialFilterValues = {selectedItemType: "All" , selectedTags : [], selectedManufacturers: [], order: "" , sort:"", limit: 10, page:1}
 
 export default function ProductContextApp({ children }) {
 
@@ -22,10 +22,6 @@ export default function ProductContextApp({ children }) {
 
   const [selectedItemType, setSelectedItemType] = useState(storedFilterValues.selectedItemType);
 
-  const [selectedManufacturer, setSelectedManufacturer] = useState(storedFilterValues.selectedManufacturer);
-
-  const [selectedTag, setSelectedTag] = useState(storedFilterValues.selectedTag);
-
   const [sort, setSort] = useState(storedFilterValues.sort);
 
   const [order, setOrder] = useState(storedFilterValues.order);
@@ -37,35 +33,33 @@ export default function ProductContextApp({ children }) {
   const [shoppingCard, setShoppingCard] = useState([]);
 
   const [increaseBtn, setIncreaseBtn] = useState(0);
+  
+  const [selectedManufacturers, setSelectedManufacturers] = useState([storedFilterValues.selectedManufacturers]);
 
-  // const [totalPrice, setTotalPrice] = useState(0);
+  const [selectedTags, setSelectedTags] = useState([storedFilterValues.selectedTags]);
 
-
-
-
-  console.log("shopping card context", shoppingCard);
+  console.log("selectedManufacturers  context", selectedManufacturers);
 
   useEffect(() => {
     
     const pItemType = selectedItemType ? `&itemType=${selectedItemType}` : "";
-    const pSelectedManufacturer = selectedManufacturer
-      ? `&manufacturer=${selectedManufacturer}`
-      : "";
 
-    const pSelectedTag = selectedTag ? `&tags_like=${selectedTag}` : "";
-    const pSort = sort
-      ? `&_sort=${sort}`
-      : "";
+    const pSelectedManufacturers = selectedManufacturers.length > 0 ? `&manufacturer=${selectedManufacturers.join('&manufacturer=')}` : "";
 
-      console.log(" context pSort", pSort);
-    const pOrder = order
-      ? `&_order=${order}`
-      : "";
-      const filterValues = {selectedItemType , selectedTag, selectedManufacturer, order , sort, limit, page}
-      const sfilterValues = JSON.stringify(filterValues);
-      localStorage.setItem("filterValues" , sfilterValues)
+    const pSort = sort ? `&_sort=${sort}` : "";
+
+    const pSelectedTags = selectedTags.length > 0 ? `&tag=${selectedTags.join('&tags_like=')}` : "";
+
+    const pOrder = order ? `&_order=${order}` : "";
+
+    const filterValues = {selectedItemType , selectedTags, pSelectedManufacturers, order , sort, limit, page}
+
+    const sfilterValues = JSON.stringify(filterValues);
+
+    localStorage.setItem("filterValues" , sfilterValues)
+    
     fetch(
-      `${baseURL}/items?_page=${page}&_limit=${limit}${pItemType}${pSelectedManufacturer}${pSelectedTag}${pSort}${pOrder}`
+      `${baseURL}/items?_page=${page}&_limit=${limit}${pItemType}${pSelectedManufacturers}${pSelectedTags}${pSort}${pOrder}`
     )
       .then((response) => response.json())
       .then((json) => {
@@ -76,19 +70,18 @@ export default function ProductContextApp({ children }) {
     page,
     limit,
     selectedItemType,
-    selectedManufacturer,
-    selectedTag,
+    selectedManufacturers,
+    selectedTags,
     sort,
     order,
-  ]); //call useEffect when page is changed
+  ]);
 
   const totalPrice = shoppingCard.reduce(
     (accumulator, product) => {
       const price = parseFloat(product.price);
       const quantity = parseInt(product.quantity);
       return accumulator + (price * quantity);
-      
-      
+    
     },
     0
   );
@@ -108,10 +101,6 @@ export default function ProductContextApp({ children }) {
         limit,
         setSelectedItemType,
         selectedItemType,
-        setSelectedManufacturer,
-        selectedManufacturer,
-        selectedTag,
-        setSelectedTag,
         setSort,
         sort,
         setOrder,
@@ -125,6 +114,10 @@ export default function ProductContextApp({ children }) {
         setIncreaseBtn,
         increaseBtn,
         totalPrice,
+        selectedManufacturers,
+        setSelectedManufacturers,
+        selectedTags,
+        setSelectedTags,
 
 
       }}

@@ -13,7 +13,7 @@ function Filtration() {
   const productContext = useContext(ProductContext);
   // console.log("Filtration  productContext:", productContext);
 
-  const [selectedOption, setSelectedOption] = useState(""); // State to manage the selected option
+  const [selectedOption, setSelectedOption] = useState(""); 
   const [manufacturerSearch, setManufacturerSearch] = useState("");
   const [tagSearch, setTagSearch] = useState("");
  
@@ -44,14 +44,32 @@ function Filtration() {
 
 
   const onCompanyChangeHandler = (event) => {
-    const selectedManufacturer = event.target.value === productContext.selectedManufacturer ? '' : event.target.value;
-    productContext.setSelectedManufacturer(selectedManufacturer);
+  
+    const currentSelectedManufacturers = [...productContext.selectedManufacturers];
+    const isExist = currentSelectedManufacturers.includes(event.target.value);
+    if (!isExist ) {
+      currentSelectedManufacturers.push(event.target.value);
+      productContext.setSelectedManufacturers(currentSelectedManufacturers);
+    } else {
+      productContext.setSelectedManufacturers(currentSelectedManufacturers.filter(m =>  m!==event.target.value))
+    }
   };
 
+
   const onTagHandler = (event) => {
-    const selectedTag = event.target.value === productContext.selectedTag ? '' : event.target.value;
-    productContext.setSelectedTag(selectedTag);
-  };
+    const currentSelectedTags = [...productContext.selectedTags];
+    const isExist = currentSelectedTags.includes(event.target.value);
+    if (!isExist) {
+      currentSelectedTags.push(event.target.value);
+      productContext.setSelectedTags(currentSelectedTags);
+    } else {
+      productContext.setSelectedTags(currentSelectedTags.filter(n => n!==event.target.value))
+    }
+  }
+
+
+
+  
 
   //Sorting function
 
@@ -89,8 +107,8 @@ function Filtration() {
 
 
 const clearFiltration = () => {
-  productContext.setSelectedManufacturer("");
-  productContext.setSelectedTag("");
+  productContext.setSelectedManufacturers("");
+  productContext.setSelectedTags("");
   productContext.setSort("");
   productContext.setOrder("");
 
@@ -157,7 +175,7 @@ const clearFiltration = () => {
                 value={company.slug}
                 onChange={onCompanyChangeHandler}
                 type="checkbox"
-                checked={productContext.selectedManufacturer === company.slug}
+                checked={productContext.selectedManufacturers.includes(company.slug)}
               />
               <label htmlFor="scales">{company.name}</label>
             </div>
@@ -185,7 +203,7 @@ const clearFiltration = () => {
                 value={tag}
                 onChange={onTagHandler}
                 type="checkbox"
-                checked={productContext.selectedTag === tag}
+                checked={productContext.selectedTags.includes(tag)}
               />
               <label htmlFor="tag">{tag}</label>
             </div>
