@@ -134,22 +134,22 @@ const clearFiltration = () => {
         <p>Sorting</p>
         <div className="sortingList">
           <label for="Low to high">
-            <input name="sortingCheck" onChange={onLowToHigh} type="radio" checked={selectedOption === "lowToHigh"} />
+            <input name="sorting" onChange={onLowToHigh} type="radio" checked={selectedOption === "lowToHigh"} />
             Price low to high
           </label>
 
           <label for="High to low">
-            <input name="sortingCheck" className="radioBtn" onChange={onHighToLow} type="radio" checked={selectedOption === "highToLow"}  />
+            <input name="sorting" className="radioBtn" onChange={onHighToLow} type="radio" checked={selectedOption === "highToLow"}  />
           Price high to low
           </label>
 
           <label for="New to old">
-            <input name="sortingCheck" className="radioBtn" onChange={onNewToOld} type="radio" checked={selectedOption === "newToOld"} />
+            <input name="sorting" className="radioBtn" onChange={onNewToOld} type="radio" checked={selectedOption === "newToOld"} />
             New to old
           </label>
 
           <label for="Old to new">
-            <input name="sortingCheck" className="radioBtn" onChange={onOldToNew} type="radio" checked={selectedOption === "oldToNew"} /> Old to new{" "}
+            <input name="sorting" className="radioBtn" onChange={onOldToNew} type="radio" checked={selectedOption === "oldToNew"} /> Old to new{" "}
           </label>
         </div>
       </div>
