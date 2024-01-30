@@ -28,6 +28,7 @@ const ProductDetails = () => {
       <h2>Product Detail Page</h2>
       <p>Product ID: {slug}</p>
       <p>Product price: {item.price}</p>
+      <p>Manufacturer : {item.manufacturer}</p>
 
       {/* Display other product details */}
     </div>

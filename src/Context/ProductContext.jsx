@@ -51,7 +51,7 @@ export default function ProductContextApp({ children }) {
     
     const pItemType = selectedItemType ? `&itemType=${selectedItemType}` : "";
 
-    const pSelectedManufacturers = selectedManufacturers.length > 1 ? `&manufacturer=${selectedManufacturers.join('&manufacturer=')}` : "";
+    const pSelectedManufacturers = selectedManufacturers.length > 0 ? `&manufacturer=${selectedManufacturers.join('&manufacturer=')}` : "";
 
     const pSort = sort ? `&_sort=${sort}` : "";
 
