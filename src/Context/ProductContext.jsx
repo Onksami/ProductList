@@ -39,9 +39,10 @@ export default function ProductContextApp({ children }) {
 
   const [increaseBtn, setIncreaseBtn] = useState(0);
   
-  const [selectedManufacturers, setSelectedManufacturers] = useState([storedFilterValues.selectedManufacturers]);
+  const [selectedManufacturers, setSelectedManufacturers] = useState(storedFilterValues.selectedManufacturers || []);
+  
+  const [selectedTags, setSelectedTags] = useState(storedFilterValues.selectedTags || []);
 
-  const [selectedTags, setSelectedTags] = useState([storedFilterValues.selectedTags]);
 
   // console.log("selectedManufacturers  context", selectedManufacturers);
 
@@ -56,6 +57,8 @@ export default function ProductContextApp({ children }) {
     const pSort = sort ? `&_sort=${sort}` : "";
 
     const pSelectedTags = selectedTags.length > 0 ? `&tag=${selectedTags.join('&tags_like=')}` : "";
+
+    console.log("what is comin'" , pSelectedManufacturers , pSelectedTags);
 
     const pOrder = order ? `&_order=${order}` : "";
 
