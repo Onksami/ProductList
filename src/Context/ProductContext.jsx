@@ -14,7 +14,12 @@ export default function ProductContextApp({ children }) {
 
   // console.log("storedFilterValues" , storedFilterValues ) ;
 
+
   const [items, setItems] = useState([]);
+
+  
+  const [loading, setLoading] = useState(true);
+  
 
   const [page, setPage] = useState(storedFilterValues.page);  
 
@@ -38,9 +43,11 @@ export default function ProductContextApp({ children }) {
 
   const [selectedTags, setSelectedTags] = useState([storedFilterValues.selectedTags]);
 
-  console.log("selectedManufacturers  context", selectedManufacturers);
+  // console.log("selectedManufacturers  context", selectedManufacturers);
 
   useEffect(() => {
+
+    setLoading(true);
     
     const pItemType = selectedItemType ? `&itemType=${selectedItemType}` : "";
 
@@ -65,6 +72,7 @@ export default function ProductContextApp({ children }) {
       .then((json) => {
         // console.log("json", json);
         setItems(json);
+        setLoading(false);
       });
   }, [
     page,
@@ -122,7 +130,12 @@ export default function ProductContextApp({ children }) {
 
       }}
     >
-      {children}
+    { loading ? ( 
+      <h6>Loading .  .  .</h6>
+    ): (
+      children
+    )}
+    
     </ProductContext.Provider>
 
     
